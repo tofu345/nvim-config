@@ -26,15 +26,5 @@ vim.opt.isfname:append("@-@")
 
 vim.opt.updatetime = 50
 
-local opts = { noremap = true, silent = true }
+local opjs = { noremap = true, silent = true }
 
-local function quickfix()
-	vim.lsp.buf.code_action({
-		filter = function(a)
-			return a.isPreferred
-		end,
-		apply = true,
-	})
-end
-
-vim.keymap.set("n", "<leader>qf", quickfix, opts)

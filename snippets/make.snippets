@@ -1,0 +1,12 @@
+# base
+snippet base
+	CC=gcc
+	CFLAGS=-Wall -g
+	FILES=${0}
+	
+	all: main
+		@ ./a.out
+	
+	main: \${FILES} Makefile
+		@ \${CC} \${CFLAGS} \${FILES}
+
