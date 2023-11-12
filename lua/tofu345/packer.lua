@@ -43,6 +43,16 @@ return require("packer").startup(function(use)
 	use("eandrju/cellular-automaton.nvim")
 	use("lewis6991/gitsigns.nvim")
 
+	use("neovim/nvim-lspconfig")
+	use("simrat39/rust-tools.nvim")
+
+	use({
+		"numToStr/Comment.nvim",
+		config = function()
+			require("Comment").setup()
+		end,
+	})
+
 	use({
 		"VonHeikemen/lsp-zero.nvim",
 		branch = "v1.x",
