@@ -35,7 +35,7 @@ vim.api.nvim_create_autocmd({ "BufWritePost" }, {
 	desc = "Auto-format Rust after saving",
 	callback = function()
 		local filePath = vim.api.nvim_buf_get_name(0)
-		vim.cmd(":silent !cargo fmt")
+		vim.cmd(":silent !rustfmt '" .. filePath .. "'")
 	end,
 	group = autocmd_group,
 })

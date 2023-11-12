@@ -21,7 +21,7 @@ vim.keymap.set("n", "<leader>Y", [["+Y]])
 vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 
 vim.keymap.set("n", "Q", "<nop>")
--- vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
+vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tms<CR>")
 
 local function quickfix()
 	vim.lsp.buf.code_action({
@@ -33,6 +33,9 @@ local function quickfix()
 end
 
 vim.keymap.set("n", "<leader>qf", quickfix, opts)
+
+-- Eandrju/cellular-automaton.nvim
+vim.keymap.set("n", "<leader>fml", "<cmd>CellularAutomaton make_it_rain<CR>")
 
 -- ??
 -- vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")

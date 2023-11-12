@@ -1,7 +1,7 @@
 # base
 snippet base
 	CC=gcc
-	CFLAGS=-Wall -g
+	CFLAGS=-g -Wall -Wextra -Werror -O2 -std=c99 -pedantic
 	FILES=${0}
 	
 	all: main
