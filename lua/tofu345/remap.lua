@@ -46,6 +46,11 @@ vim.keymap.set("n", "<leader>j", ":bprevious<cr>")
 vim.keymap.set("n", "<leader>d", ":bdelete<cr>")
 
 vim.keymap.set("n", "<leader>r", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+-- https://stackoverflow.com/questions/676600/vim-search-and-replace-selected-text
+vim.cmd([[
+    vnoremap <leader>R "hy:%s/<C-r>h//gc<left><left><left>
+]])
+
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
 vim.keymap.set("n", "<A-v>", "<C-v>")
