@@ -27,13 +27,15 @@ return require("packer").startup(function(use)
 		run = "make install_jsregexp",
 	})
 
-	use({
-		"rose-pine/neovim",
-		as = "rose-pine",
-		config = function()
-			vim.cmd("colorscheme rose-pine-main")
-		end,
-	})
+	--	use({
+	--		"rose-pine/neovim",
+	--		as = "rose-pine",
+	--		config = function()
+	--			vim.cmd("colorscheme rose-pine-main")
+	--		end,
+	--	})
+
+	use({ "bluz71/vim-moonfly-colors", as = "moonfly" })
 
 	use("nvim-treesitter/nvim-treesitter", { run = ":TSUpdate" })
 	use("nvim-treesitter/playground")
