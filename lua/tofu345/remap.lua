@@ -43,9 +43,12 @@ vim.keymap.set("n", "<leader>d", ":bdelete<cr>")
 -- Search and replace word under cursor
 vim.keymap.set("n", "<leader>r", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
--- https://stackoverflow.com/questions/676600/vim-search-and-replace-selected-text
 vim.cmd([[
+    " https://stackoverflow.com/questions/676600/vim-search-and-replace-selected-text
     vnoremap <leader>R "hy:%s/\M<C-r>h//gI<left><left><left>
+    
+    " https://stackoverflow.com/questions/4521818/automatically-insert-a-matching-brace-in-vim
+    inoremap {<CR> {<CR>}<Esc>ko
 ]])
 
 -- Git Signs
