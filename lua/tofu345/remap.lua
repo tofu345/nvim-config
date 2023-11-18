@@ -49,6 +49,7 @@ vim.cmd([[
     
     " https://stackoverflow.com/questions/4521818/automatically-insert-a-matching-brace-in-vim
     inoremap {<CR> {<CR>}<Esc>ko
+    inoremap ( ()<Esc>i
 ]])
 
 -- Git Signs
