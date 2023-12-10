@@ -32,8 +32,24 @@ return require("packer").startup(function(use)
 		as = "rose-pine",
 	})
 
+	use({
+		"goolord/alpha-nvim",
+		requires = { "nvim-tree/nvim-web-devicons" },
+		config = function()
+			require("alpha").setup(require("alpha.themes.startify").config)
+		end,
+	})
+
+	use({
+		"mrcjkb/haskell-tools.nvim",
+		version = "^3", -- Recommended
+		ft = { "haskell", "lhaskell", "cabal", "cabalproject" },
+	})
+
 	use("mhartington/formatter.nvim")
 	use("sbdchd/neoformat")
+
+	use("nvim-treesitter/nvim-treesitter-context")
 
 	use("nvim-treesitter/nvim-treesitter", { run = ":TSUpdate" })
 	use("nvim-treesitter/playground")

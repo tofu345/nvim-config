@@ -1,30 +1,44 @@
-vim.opt.nu = true
-vim.opt.relativenumber = true
+local set = vim.opt
 
-vim.opt.tabstop = 4
-vim.opt.softtabstop = 4
-vim.opt.shiftwidth = 4
-vim.opt.expandtab = true
+set.nu = true
+set.relativenumber = true
 
-vim.opt.smartindent = true
+set.ignorecase = true
+set.smartcase = true
 
-vim.opt.wrap = false
+set.tabstop = 4
+set.softtabstop = 4
+set.shiftwidth = 4
+set.expandtab = true
 
-vim.opt.swapfile = false
-vim.opt.backup = false
-vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
-vim.opt.undofile = true
+set.smartindent = true
 
-vim.opt.hlsearch = false
-vim.opt.incsearch = true
+set.wrap = false
 
-vim.opt.termguicolors = true
+set.swapfile = false
+set.backup = false
+set.undodir = os.getenv("HOME") .. "/.vim/undodir"
+set.undofile = true
 
-vim.opt.scrolloff = 8
--- vim.opt.signcolumn = "yes"
-vim.opt.isfname:append("@-@")
+set.hlsearch = false
+set.incsearch = true
 
-vim.opt.updatetime = 50
+set.termguicolors = true
 
-local opjs = { noremap = true, silent = true }
+set.scrolloff = 8
+-- set.signcolumn = "yes"
+set.isfname:append("@-@")
 
+set.updatetime = 50
+
+-- local opjs = { noremap = true, silent = true }
+
+vim.cmd([[
+    " Hide netrw top bar
+    let g:netrw_banner = 0
+
+    set foldmethod=indent   
+    set foldnestmax=10
+    set nofoldenable
+    set foldlevel=2  
+]])
