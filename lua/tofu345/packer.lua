@@ -40,12 +40,6 @@ return require("packer").startup(function(use)
 		end,
 	})
 
-	use({
-		"mrcjkb/haskell-tools.nvim",
-		version = "^3", -- Recommended
-		ft = { "haskell", "lhaskell", "cabal", "cabalproject" },
-	})
-
 	use("mhartington/formatter.nvim")
 	use("sbdchd/neoformat")
 

@@ -52,7 +52,7 @@ vim.cmd([[
     vnoremap <leader>R "hy:%s/\M<C-r>h//gc<left><left><left>
     
     " https://stackoverflow.com/questions/4521818/automatically-insert-a-matching-brace-in-vim
-    inoremap {<CR> {<CR>}<Esc>ko
+    inoremap {<CR> {<CR>$}<Esc>ko
 ]])
 
 -- Git Signs
