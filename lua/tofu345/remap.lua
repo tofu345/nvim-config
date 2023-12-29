@@ -3,7 +3,7 @@ local keymap = vim.keymap
 vim.g.mapleader = " "
 
 -- open netrw
-keymap.set("n", "<leader>pv", ":Ex<CR>") 
+keymap.set("n", "<leader>pv", ":Ex<CR>")
 
 -- Move highlighted text
 keymap.set("v", "J", ":m '>+1<CR>gv=gv")
@@ -52,7 +52,7 @@ vim.cmd([[
     vnoremap <leader>R "hy:%s/\M<C-r>h//gc<left><left><left>
     
     " https://stackoverflow.com/questions/4521818/automatically-insert-a-matching-brace-in-vim
-    inoremap {<CR> {<CR>$}<Esc>ko
+    inoremap {<CR> {<CR>}<Esc>ko
 ]])
 
 -- Git Signs
