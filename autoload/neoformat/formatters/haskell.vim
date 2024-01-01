@@ -1,18 +1,11 @@
 function! neoformat#formatters#haskell#enabled() abort
-    return ['ormolu']
+    return ['hindent']
 endfunction
 
-function! neoformat#formatters#haskell#ormolu() abort
-    let opts = get(g:, 'ormolu_ghc_opt', [])
-    if opts != []
-        let opts = '-o' . join(opts, ' -o')
-    else
-        let opts = ''
-    endif
+function! neoformat#formatters#haskell#hindent() abort
     return {
-        \ 'exe' : 'ormolu',
-        \ 'args': [opts],
+        \ 'exe' : 'hindent',
+        \ 'args': ['--indent-size ' . shiftwidth()],
         \ 'stdin' : 1,
         \ }
 endfunction
-
