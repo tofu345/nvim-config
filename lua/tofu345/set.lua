@@ -37,7 +37,7 @@ set.updatetime = 50
 
 vim.cmd([[
     " Hide netrw top bar
-    let g:netrw_banner = 0
+    let g:netrw_banner = 1
 
     set foldmethod=indent   
     set foldnestmax=10

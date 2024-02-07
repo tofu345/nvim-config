@@ -2,6 +2,9 @@ local keymap = vim.keymap
 
 vim.g.mapleader = " "
 
+-- s
+keymap.set("n", "s", '"_s')
+
 -- open netrw
 keymap.set("n", "<leader>pv", ":Ex<CR>")
 

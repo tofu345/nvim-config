@@ -43,7 +43,7 @@ lsp.on_attach(function(client, bufnr)
 		vim.lsp.buf.definition()
 	end, opts)
 
-	vim.keymap.set("n", "K", function()
+	vim.keymap.set("n", "<C-k>", function()
 		vim.lsp.buf.hover()
 	end, opts)
 
