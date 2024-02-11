@@ -1,6 +1,6 @@
 local set = vim.opt
 
-vim.lsp.set_log_level("debug")
+vim.lsp.set_log_level("off")
 
 set.nu = true
 set.relativenumber = true
