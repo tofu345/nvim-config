@@ -50,13 +50,9 @@ return require("packer").startup(function(use)
 	use("eandrju/cellular-automaton.nvim")
 	use("lewis6991/gitsigns.nvim")
 
-	use("neovim/nvim-lspconfig")
+	use({ "kevinhwang91/nvim-ufo", requires = "kevinhwang91/promise-async" })
 
-	-- use({
-	-- 	"mrcjkb/rustaceanvim",
-	-- 	version = "^4", -- Recommended
-	-- 	ft = { "rust" },
-	-- })
+	use("neovim/nvim-lspconfig")
 
 	use({
 		"numToStr/Comment.nvim",

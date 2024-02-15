@@ -136,16 +136,6 @@ _G.packer_plugins = {
     path = "/home/tofs/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
     url = "https://github.com/lewis6991/gitsigns.nvim"
   },
-  ["go.nvim"] = {
-    loaded = true,
-    path = "/home/tofs/.local/share/nvim/site/pack/packer/start/go.nvim",
-    url = "https://github.com/ray-x/go.nvim"
-  },
-  ["guihua.lua"] = {
-    loaded = true,
-    path = "/home/tofs/.local/share/nvim/site/pack/packer/start/guihua.lua",
-    url = "https://github.com/ray-x/guihua.lua"
-  },
   harpoon = {
     loaded = true,
     path = "/home/tofs/.local/share/nvim/site/pack/packer/start/harpoon",
@@ -196,6 +186,11 @@ _G.packer_plugins = {
     path = "/home/tofs/.local/share/nvim/site/pack/packer/start/nvim-treesitter-context",
     url = "https://github.com/nvim-treesitter/nvim-treesitter-context"
   },
+  ["nvim-ufo"] = {
+    loaded = true,
+    path = "/home/tofs/.local/share/nvim/site/pack/packer/start/nvim-ufo",
+    url = "https://github.com/kevinhwang91/nvim-ufo"
+  },
   ["nvim-web-devicons"] = {
     loaded = true,
     path = "/home/tofs/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
@@ -215,6 +210,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/tofs/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
+  },
+  ["promise-async"] = {
+    loaded = true,
+    path = "/home/tofs/.local/share/nvim/site/pack/packer/start/promise-async",
+    url = "https://github.com/kevinhwang91/promise-async"
   },
   ["rose-pine"] = {
     loaded = true,
