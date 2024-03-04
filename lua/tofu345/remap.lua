@@ -2,6 +2,11 @@ local keymap = vim.keymap
 
 vim.g.mapleader = " "
 
+-- File navigation (using barbar.nvim plugin)
+-- keymap.set("n", "<leader>k", ":bnext<cr>")
+-- keymap.set("n", "<leader>j", ":bprevious<cr>")
+-- keymap.set("n", "<leader>d", ":bdelete<cr>")
+
 -- s
 keymap.set("n", "s", '"_s')
 
@@ -37,15 +42,6 @@ keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tms<CR>")
 
 -- Eandrju/cellular-automaton.nvim
 keymap.set("n", "<leader>fml", "<cmd>CellularAutomaton make_it_rain<CR>")
-
--- ??
--- keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
--- keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
-
--- File navigation
-keymap.set("n", "<leader>k", ":bnext<cr>")
-keymap.set("n", "<leader>j", ":bprevious<cr>")
-keymap.set("n", "<leader>d", ":bdelete<cr>")
 
 -- Search and replace word under cursor
 keymap.set("n", "<leader>r", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gc<Left><Left><Left>]])
