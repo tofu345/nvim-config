@@ -13,4 +13,3 @@ endfunction
 " function! neoformat#formatters#c#{{ other formatter name }}() abort
 "   return {'exe': {{ other formatter name }}
 " endfunction
-
