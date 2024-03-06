@@ -44,7 +44,7 @@ keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tms<CR>")
 keymap.set("n", "<leader>fml", "<cmd>CellularAutomaton make_it_rain<CR>")
 
 -- Search and replace word under cursor
-keymap.set("n", "<leader>r", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gc<Left><Left><Left>]])
+-- keymap.set("n", "<leader>r", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gc<Left><Left><Left>]])
 
 vim.cmd([[
     " https://stackoverflow.com/questions/676600/vim-search-and-replace-selected-text
