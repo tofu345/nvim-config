@@ -56,7 +56,7 @@ lsp.on_attach(function(client, bufnr)
 	-- 	vim.diagnostic.goto_prev()
 	-- end, opts)
 	--
-	vim.keymap.set("n", "<leader>va", function()
+	vim.keymap.set("n", "<leader>ca", function()
 		vim.lsp.buf.code_action()
 	end, opts)
 
