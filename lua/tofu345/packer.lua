@@ -31,16 +31,12 @@ return require("packer").startup(function(use)
 	})
 
 	-- language support
-	use("ray-x/go.nvim")
-	use("ray-x/guihua.lua") -- recommended if need floating window support
 	use({
 		"mrcjkb/rustaceanvim",
 		ft = "rust",
 		version = "^4",
 	})
 
-	-- formatters
-	use("mhartington/formatter.nvim")
 	use("sbdchd/neoformat")
 
 	-- convenient file markers
