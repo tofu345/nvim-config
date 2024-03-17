@@ -7,7 +7,7 @@ vim.g.mapleader = " "
 -- keymap.set("n", "<leader>j", ":bprevious<cr>")
 -- keymap.set("n", "<leader>d", ":bdelete<cr>")
 
-vim.keymap.set("n", "<leader>f", ":Neoformat<CR>")
+vim.keymap.set("n", "<A-f>", ":Neoformat<CR>")
 
 -- s
 keymap.set("n", "s", '"_s')
