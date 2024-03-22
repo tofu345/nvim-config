@@ -2,12 +2,13 @@ local keymap = vim.keymap
 
 vim.g.mapleader = " "
 
--- File navigation (using barbar.nvim plugin)
--- keymap.set("n", "<leader>k", ":bnext<cr>")
--- keymap.set("n", "<leader>j", ":bprevious<cr>")
--- keymap.set("n", "<leader>d", ":bdelete<cr>")
+-- File navigation
+keymap.set("n", "<A-,>", "<Cmd>bnext<CR>")
+keymap.set("n", "<A-.>", "<Cmd>bprev<CR>")
+keymap.set("n", "<A-c>", "<Cmd>bd<CR>")
 
-vim.keymap.set("n", "<A-f>", ":Neoformat<CR>")
+-- format
+keymap.set("n", "<A-f>", ":Neoformat<CR>")
 
 -- s
 keymap.set("n", "s", '"_s')
@@ -51,9 +52,6 @@ keymap.set("n", "<leader>fml", "<cmd>CellularAutomaton make_it_rain<CR>")
 vim.cmd([[
     " https://stackoverflow.com/questions/676600/vim-search-and-replace-selected-text
     vnoremap <leader>R "hy:%s/\M<C-r>h//gc<left><left><left>
-    
-    " https://stackoverflow.com/questions/4521818/automatically-insert-a-matching-brace-in-vim
-    inoremap {<CR> {<CR>}<Esc>ko
 ]])
 
 -- Git Signs

@@ -78,9 +78,6 @@ return require("packer").startup(function(use)
 		requires = { "nvim-tree/nvim-web-devicons", opt = true },
 	})
 
-	-- tab bar
-	use("romgrk/barbar.nvim")
-
 	use("nvim-treesitter/nvim-treesitter-context")
 	use("nvim-treesitter/nvim-treesitter", { run = ":TSUpdate" })
 	use("nvim-treesitter/playground")
