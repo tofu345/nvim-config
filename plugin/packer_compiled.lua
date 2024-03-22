@@ -91,11 +91,6 @@ _G.packer_plugins = {
     path = "/home/tofs/.local/share/nvim/site/pack/packer/start/alpha-nvim",
     url = "https://github.com/goolord/alpha-nvim"
   },
-  ["barbar.nvim"] = {
-    loaded = true,
-    path = "/home/tofs/.local/share/nvim/site/pack/packer/start/barbar.nvim",
-    url = "https://github.com/romgrk/barbar.nvim"
-  },
   ["cellular-automaton.nvim"] = {
     loaded = true,
     path = "/home/tofs/.local/share/nvim/site/pack/packer/start/cellular-automaton.nvim",
