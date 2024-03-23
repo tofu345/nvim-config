@@ -8,7 +8,7 @@ keymap.set("n", "<A-.>", "<Cmd>bprev<CR>")
 keymap.set("n", "<A-c>", "<Cmd>bd<CR>")
 
 -- format
-keymap.set("n", "<A-f>", ":Neoformat<CR>")
+keymap.set("n", "<A-f>", "<Cmd>Neoformat<CR>")
 
 -- s
 keymap.set("n", "s", '"_s')
