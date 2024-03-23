@@ -3,8 +3,8 @@ local keymap = vim.keymap
 vim.g.mapleader = " "
 
 -- File navigation
-keymap.set("n", "<A-,>", "<Cmd>bnext<CR>")
-keymap.set("n", "<A-.>", "<Cmd>bprev<CR>")
+keymap.set("n", "<A-,>", "<Cmd>bprev<CR>")
+keymap.set("n", "<A-.>", "<Cmd>bnext<CR>")
 keymap.set("n", "<A-c>", "<Cmd>bd<CR>")
 
 -- format
