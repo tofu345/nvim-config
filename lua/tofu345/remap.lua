@@ -2,6 +2,16 @@ local keymap = vim.keymap
 
 vim.g.mapleader = " "
 
+-- quickfix
+keymap.set("n", "<leader>qf", function()
+	vim.lsp.buf.code_action({
+		filter = function(a)
+			return a.isPreferred
+		end,
+		apply = true,
+	})
+end)
+
 -- File navigation
 keymap.set("n", "<A-,>", "<Cmd>bprev<CR>")
 keymap.set("n", "<A-.>", "<Cmd>bnext<CR>")
@@ -49,27 +59,11 @@ keymap.set("n", "<leader>fml", "<cmd>CellularAutomaton make_it_rain<CR>")
 -- Search and replace word under cursor
 -- keymap.set("n", "<leader>r", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gc<Left><Left><Left>]])
 
-vim.cmd([[
-    " https://stackoverflow.com/questions/676600/vim-search-and-replace-selected-text
-    vnoremap <leader>R "hy:%s/\M<C-r>h//gc<left><left><left>
-]])
-
 -- Git Signs
 keymap.set("n", "<leader>gs", vim.cmd.Git)
 
 -- Make current bash file executable
 -- keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
-
-local function quickfix()
-	vim.lsp.buf.code_action({
-		filter = function(a)
-			return a.isPreferred
-		end,
-		apply = true,
-	})
-end
-
-keymap.set("n", "<leader>qf", quickfix, opts)
 
 -- Trouble.lua
 keymap.set("n", "<leader>xx", function()

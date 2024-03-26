@@ -34,6 +34,11 @@ lsp.set_preferences({
 })
 
 lsp.on_attach(function(client, bufnr)
+	lsp.default_keymaps({
+		buffer = bufnr,
+		preserve_mappings = false,
+	})
+
 	local opts = { buffer = bufnr, remap = false }
 
 	vim.keymap.set("n", "<C-k>", function()

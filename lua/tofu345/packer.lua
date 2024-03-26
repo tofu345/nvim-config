@@ -36,6 +36,8 @@ return require("packer").startup(function(use)
 		ft = "rust",
 		version = "^4",
 	})
+	use("ray-x/go.nvim")
+	use("ray-x/guihua.lua") -- recommended if need floating window support
 
 	use("sbdchd/neoformat")
 

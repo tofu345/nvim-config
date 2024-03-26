@@ -43,6 +43,7 @@ set.updatetime = 50
 vim.cmd([[
     " Hide netrw top bar
     let g:netrw_banner = 1
+    " let g:netrw_liststyle = 3 " 3=tree
 
     let g:foldmethod = "manual"
 ]])
