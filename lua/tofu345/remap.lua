@@ -12,6 +12,13 @@ keymap.set("n", "<leader>qf", function()
 	})
 end)
 
+-- LuaSnip
+local ls = require("luasnip")
+
+keymap.set({ "i" }, "<C-K>", function()
+	ls.expand()
+end, { silent = true })
+
 -- File navigation
 keymap.set("n", "<A-,>", "<Cmd>bprev<CR>")
 keymap.set("n", "<A-.>", "<Cmd>bnext<CR>")
@@ -69,22 +76,3 @@ keymap.set("n", "<leader>gs", vim.cmd.Git)
 keymap.set("n", "<leader>xx", function()
 	require("trouble").toggle()
 end)
-
--- LuaSnip
--- local ls = require("luasnip")
-
--- keymap.set({ "i" }, "<C-K>", function()
--- 	ls.expand()
--- end, { silent = true })
--- keymap.set({ "i", "s" }, "<C-L>", function()
--- 	ls.jump(1)
--- end, { silent = true })
--- keymap.set({ "i", "s" }, "<C-J>", function()
--- 	ls.jump(-1)
--- end, { silent = true })
---
--- keymap.set({ "i", "s" }, "<C-E>", function()
--- 	if ls.choice_active() then
--- 		ls.change_choice(1)
--- 	end
--- end, { silent = true })
