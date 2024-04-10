@@ -12,17 +12,21 @@ keymap.set("n", "<leader>qf", function()
 	})
 end)
 
--- LuaSnip
-local ls = require("luasnip")
+keymap.set({ "n", "i" }, "<C-c>", "<Esc>")
 
+-- LuaSnip
 keymap.set({ "i" }, "<C-K>", function()
-	ls.expand()
+	require("luasnip").expand()
 end, { silent = true })
 
--- File navigation
+-- Buffer navigation
 keymap.set("n", "<A-,>", "<Cmd>bprev<CR>")
 keymap.set("n", "<A-.>", "<Cmd>bnext<CR>")
 keymap.set("n", "<A-c>", "<Cmd>bd<CR>")
+
+-- Tab navigation
+keymap.set("n", "<leader>,", "<Cmd>tabp<CR>")
+keymap.set("n", "<leader>.", "<Cmd>tabn<CR>")
 
 -- format
 keymap.set("n", "<A-f>", "<Cmd>Neoformat<CR>")
@@ -33,13 +37,13 @@ keymap.set("n", "s", '"_s')
 -- open netrw
 keymap.set("n", "<leader>pv", ":Ex<CR>")
 
+-- keymap.set("n", "J", "<nop>")
+
 -- Move highlighted text
 keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
--- keymap.set("n", "J", "mzJ`z") -- Delete line under text?
-
-keymap.set("n", "<C-a>", "ggVG")
+keymap.set("n", "<A-a>", "ggVG")
 
 keymap.set("n", "<C-d>", "<C-d>zz")
 keymap.set("n", "<C-u>", "<C-u>zz")
@@ -76,3 +80,7 @@ keymap.set("n", "<leader>gs", vim.cmd.Git)
 keymap.set("n", "<leader>xx", function()
 	require("trouble").toggle()
 end)
+
+vim.cmd([[ 
+    let g:ftplugin_sql_omni_key = '<C-j>'
+]])

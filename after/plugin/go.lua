@@ -6,5 +6,3 @@
 -- 	end,
 -- 	group = format_sync_grp,
 -- })
-
-require("go").setup()
