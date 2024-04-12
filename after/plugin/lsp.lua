@@ -50,7 +50,12 @@ lsp.on_attach(function(client, bufnr)
 	end, opts)
 
 	vim.keymap.set("n", "<leader>ca", function()
-		vim.lsp.buf.code_action()
+		vim.lsp.buf.code_action({
+			filter = function(a)
+				return a.isPreferred
+			end,
+			apply = true,
+		})
 	end, opts)
 
 	vim.keymap.set("n", "<leader>vrr", function()
@@ -60,22 +65,6 @@ lsp.on_attach(function(client, bufnr)
 	vim.keymap.set("n", "<leader>r", function()
 		vim.lsp.buf.rename()
 	end, opts)
-
-	-- vim.keymap.set("n", "<leader>vws", function()
-	-- 	vim.lsp.buf.workspace_symbol()
-	-- end, opts)
-
-	-- vim.keymap.set("n", "[d", function()
-	-- 	vim.diagnostic.goto_next()
-	-- end, opts)
-
-	-- vim.keymap.set("n", "]d", function()
-	-- 	vim.diagnostic.goto_prev()
-	-- end, opts)
-
-	-- vim.keymap.set("i", "<C-h>", function()
-	-- 	vim.lsp.buf.signature_help()
-	-- end, opts)
 end)
 
 lsp.setup()

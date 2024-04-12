@@ -8,3 +8,6 @@ ls.config.set_config({
 	enable_autosnippets = true,
 })
 
+vim.keymap.set({ "i" }, "<C-K>", function()
+	require("luasnip").expand()
+end, { silent = true })

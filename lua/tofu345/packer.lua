@@ -4,7 +4,7 @@ return require("packer").startup(function(use)
 	-- Packer can manage itself
 	use("wbthomason/packer.nvim")
 
-	-- finder <leader>pf
+	-- finder
 	use({
 		"nvim-telescope/telescope.nvim",
 		tag = "0.1.4",
@@ -24,9 +24,7 @@ return require("packer").startup(function(use)
 	-- snippets
 	use({
 		"L3MON4D3/LuaSnip",
-		-- follow latest release.
-		tag = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
-		-- install jsregexp (optional!:).
+		tag = "v2.*",
 		run = "make install_jsregexp",
 	})
 
@@ -37,12 +35,11 @@ return require("packer").startup(function(use)
 		version = "^4",
 	})
 	use("ray-x/go.nvim")
-	use("ray-x/guihua.lua") -- recommended if need floating window support
+	use("ray-x/guihua.lua")
 
 	use("sbdchd/neoformat")
 
-	-- convenient file markers
-	use("theprimeagen/harpoon")
+	use("theprimeagen/harpoon") -- convenient file markers
 	use("mbbill/undotree") -- undo history
 
 	-- git
