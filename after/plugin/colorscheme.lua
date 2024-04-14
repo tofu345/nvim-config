@@ -5,9 +5,9 @@ function ColorMyPencils()
 end
 
 require("rose-pine").setup({
-	styles = {
-		italic = false,
-	},
+	-- styles = {
+	-- 	italic = false,
+	-- },
 })
 
 vim.cmd("colorscheme rose-pine")
