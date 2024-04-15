@@ -24,6 +24,8 @@ keymap.set("n", "<A-.>", "<Cmd>bnext<CR>")
 keymap.set("n", "<A-c>", "<Cmd>bd<CR>")
 keymap.set("n", "<leader>,", "<Cmd>tabp<CR>")
 keymap.set("n", "<leader>.", "<Cmd>tabn<CR>")
+keymap.set("n", "<leader>n", "<Cmd>cnext<CR>")
+keymap.set("n", "<leader>N", "<Cmd>cprev<CR>")
 
 keymap.set("n", "<leader>pv", ":Ex<CR>")
 
