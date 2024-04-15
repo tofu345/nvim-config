@@ -2,6 +2,11 @@ local set = vim.opt
 
 vim.lsp.set_log_level("off")
 
+vim.g.have_nerd_font = false
+set.showmode = false -- show if in insert, visual modes etc.
+
+set.signcolumn = 'yes'
+
 set.nu = true
 set.relativenumber = true
 
@@ -31,9 +36,9 @@ set.scrolloff = 8
 set.isfname:append("@-@")
 
 set.updatetime = 50
+
 vim.cmd([[
-    " Hide netrw top bar
-    let g:netrw_banner = 1
+    let g:netrw_banner = 1 " Hide netrw top bar
     " let g:netrw_liststyle = 3 " 3=tree
 
     let g:foldmethod = "manual"

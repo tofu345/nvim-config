@@ -55,6 +55,12 @@ return require("packer").startup(function(use)
 			require("Comment").setup()
 		end,
 	})
+	use({
+		"folke/todo-comments.nvim",
+		requires = {
+			{ "nvim-lua/plenary.nvim" },
+		},
+	})
 
 	-- colour theme
 	use({
@@ -76,6 +82,10 @@ return require("packer").startup(function(use)
 		"nvim-lualine/lualine.nvim",
 		requires = { "nvim-tree/nvim-web-devicons", opt = true },
 	})
+
+	-- Useful status updates for LSP.
+	use("j-hui/fidget.nvim")
+	use("folke/neodev.nvim") -- neovim docs
 
 	use("nvim-treesitter/nvim-treesitter-context")
 	use("nvim-treesitter/nvim-treesitter", { run = ":TSUpdate" })

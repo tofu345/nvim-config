@@ -39,16 +39,17 @@ lsp.on_attach(function(client, bufnr)
 		preserve_mappings = false,
 	})
 
-	local opts = { buffer = bufnr, remap = false }
+	DefaultLspRemaps(bufnr)
+end)
 
-	vim.keymap.set("n", "<C-k>", function()
-		vim.lsp.buf.hover()
-	end, opts)
+function DefaultLspRemaps(bufnr)
+	local opts = { silent = true, buffer = bufnr, remap = false }
 
-	vim.keymap.set("n", "<leader>vd", function()
-		vim.diagnostic.open_float()
-	end, opts)
-
+	vim.keymap.set("n", "<C-k>", vim.lsp.buf.hover, opts)
+	vim.keymap.set("n", "<leader>vd", vim.diagnostic.open_float, opts)
+	vim.keymap.set("n", "gr", require("telescope.builtin").lsp_references, opts)
+	vim.keymap.set("n", "gd", require("telescope.builtin").lsp_definitions, opts)
+	vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, opts)
 	vim.keymap.set("n", "<leader>ca", function()
 		vim.lsp.buf.code_action({
 			filter = function(a)
@@ -57,15 +58,7 @@ lsp.on_attach(function(client, bufnr)
 			apply = true,
 		})
 	end, opts)
-
-	vim.keymap.set("n", "<leader>vrr", function()
-		vim.lsp.buf.references()
-	end, opts)
-
-	vim.keymap.set("n", "<leader>r", function()
-		vim.lsp.buf.rename()
-	end, opts)
-end)
+end
 
 lsp.setup()
 
