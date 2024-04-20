@@ -3,7 +3,8 @@ local set = vim.opt
 vim.lsp.set_log_level("off")
 
 vim.g.have_nerd_font = false
-set.showmode = false -- show if in insert, visual modes etc.
+set.showmode = true -- show if in insert, visual modes etc.
+set.expandtab = true
 
 set.signcolumn = 'yes'
 

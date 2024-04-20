@@ -9,7 +9,7 @@ vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next [D]iagn
 
 keymap.set("n", "Q", "<nop>")
 keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tms<CR>")
-keymap.set({ "n", "i" }, "<C-c>", "<Esc>")
+-- keymap.set({ "n", "i" }, "<C-c>", "<Esc>")
 keymap.set("n", "s", '"_s')
 
 -- keep cursor centered
@@ -40,6 +40,7 @@ keymap.set({ "n", "v" }, "<leader>y", [["+y]]) -- next greatest remap ever : asb
 -- Eandrju/cellular-automaton.nvim
 keymap.set("n", "<leader>fml", "<cmd>CellularAutomaton make_it_rain<CR>")
 
+
 vim.api.nvim_create_autocmd("TextYankPost", {
 	desc = "Highlight when yanking (copying) text",
 	group = vim.api.nvim_create_augroup("highlight-yank", { clear = true }),
@@ -50,4 +51,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 
 vim.cmd([[ 
     let g:ftplugin_sql_omni_key = '<C-j>'
+
+    " delete netrw buffer
+    autocmd FileType netrw setl bufhidden=wipe
 ]])
