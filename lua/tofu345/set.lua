@@ -6,7 +6,7 @@ vim.g.have_nerd_font = false
 set.showmode = true -- show if in insert, visual modes etc.
 set.expandtab = true
 
-set.signcolumn = 'yes'
+set.signcolumn = "yes"
 
 set.nu = true
 set.relativenumber = true

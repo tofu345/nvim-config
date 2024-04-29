@@ -11,6 +11,7 @@ keymap.set("n", "Q", "<nop>")
 keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tms<CR>")
 -- keymap.set({ "n", "i" }, "<C-c>", "<Esc>")
 keymap.set("n", "s", '"_s')
+keymap.set("n", "<A-a>", 'gg"+yG<C-o>')
 
 -- keep cursor centered
 keymap.set("n", "<C-d>", "<C-d>zz")
@@ -54,4 +55,6 @@ vim.cmd([[
 
     " delete netrw buffer
     autocmd FileType netrw setl bufhidden=wipe
+
+    let g:netrw_fastbrowse = 0
 ]])
