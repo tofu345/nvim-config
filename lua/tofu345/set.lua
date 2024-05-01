@@ -43,4 +43,7 @@ vim.cmd([[
     " let g:netrw_liststyle = 3 " 3=tree
 
     let g:foldmethod = "manual"
+
+    " Block cursor insert mode
+    :set guicursor=i:block
 ]])
