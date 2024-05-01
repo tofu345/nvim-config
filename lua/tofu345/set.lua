@@ -45,5 +45,5 @@ vim.cmd([[
     let g:foldmethod = "manual"
 
     " Block cursor insert mode
-    :set guicursor=i:block
+   :set guicursor=i:block
 ]])
