@@ -67,6 +67,7 @@ return require("packer").startup(function(use)
 		"rose-pine/neovim",
 		as = "rose-pine",
 	})
+	use({ "kabouzeid/nvim-jellybeans", requires = "rktjmp/lush.nvim" })
 
 	-- welcome page
 	use({

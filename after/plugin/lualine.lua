@@ -22,8 +22,8 @@ require("lualine").setup({
 		lualine_b = {},
 		lualine_c = { "buffers" },
 		lualine_x = {},
-		lualine_y = {},
-		lualine_z = {},
+		lualine_y = { "progress" },
+		lualine_z = { "location" },
 	},
 	inactive_sections = {
 		lualine_a = {},
