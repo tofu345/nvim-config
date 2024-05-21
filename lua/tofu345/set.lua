@@ -39,11 +39,13 @@ set.isfname:append("@-@")
 set.updatetime = 50
 
 vim.cmd([[
-    let g:netrw_banner = 1 " Hide netrw top bar
+    let g:netrw_banner = 0 " Hide netrw top bar
     " let g:netrw_liststyle = 3 " 3=tree
 
     let g:foldmethod = "manual"
 
-    " Block cursor insert mode
-   :set guicursor=i:block
+    " beam cursor insert mode
+    :set guicursor=i-ci:ver30-iCursor-blinkwait300-blinkon200-blinkoff150
+
+    :set textwidth=0
 ]])
