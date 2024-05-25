@@ -45,7 +45,7 @@ end)
 function DefaultLspRemaps(bufnr)
 	local opts = { silent = true, buffer = bufnr, remap = false }
 
-	vim.keymap.set("n", "<C-k>", vim.lsp.buf.hover, opts)
+	vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
 	vim.keymap.set("n", "<leader>vd", vim.diagnostic.open_float, opts)
 	vim.keymap.set("n", "gr", require("telescope.builtin").lsp_references, opts)
 	vim.keymap.set("n", "gd", require("telescope.builtin").lsp_definitions, opts)
