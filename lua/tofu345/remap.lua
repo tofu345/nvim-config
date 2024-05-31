@@ -41,7 +41,6 @@ keymap.set({ "n", "v" }, "<leader>y", [["+y]]) -- next greatest remap ever : asb
 -- Eandrju/cellular-automaton.nvim
 keymap.set("n", "<leader>fml", "<cmd>CellularAutomaton make_it_rain<CR>")
 
-
 vim.api.nvim_create_autocmd("TextYankPost", {
 	desc = "Highlight when yanking (copying) text",
 	group = vim.api.nvim_create_augroup("highlight-yank", { clear = true }),
