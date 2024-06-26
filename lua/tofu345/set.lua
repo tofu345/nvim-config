@@ -39,8 +39,9 @@ set.isfname:append("@-@")
 set.updatetime = 50
 
 vim.cmd([[
+    let g:netrw_fastbrowse = 0
     let g:netrw_banner = 0 " Hide netrw top bar
-    " let g:netrw_liststyle = 3 " 3=tree
+    " let g:netrw_liststyle = 3
 
     let g:foldmethod = "manual"
 
@@ -48,4 +49,6 @@ vim.cmd([[
     :set guicursor=i-ci:ver30-iCursor-blinkwait300-blinkon200-blinkoff150
 
     :set textwidth=0
+ 
+    let g:ftplugin_sql_omni_key = '<C-j>'
 ]])

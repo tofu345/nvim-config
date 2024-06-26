@@ -2,7 +2,7 @@ return {
 	"rose-pine/neovim",
 	as = "rose-pine",
 	config = function()
-		function ColorMyPencils()
+		local function ColorMyPencils()
 			-- Make background transparent
 			vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 			vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
@@ -15,6 +15,7 @@ return {
 		})
 
 		vim.cmd("colorscheme rose-pine")
+
 		ColorMyPencils()
 	end,
 }

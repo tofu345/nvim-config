@@ -3,9 +3,20 @@ return {
 	tag = "0.1.6",
 	dependencies = { "nvim-lua/plenary.nvim" },
 	config = function()
-		local builtin = require("telescope.builtin")
+		require("telescope").setup({
+			defaults = {
+				layout_config = {
+					horizontal = { width = 0.9, preview_width = 0.5 },
+				},
+			},
+		})
 
-		vim.keymap.set("n", "gr", require("telescope.builtin").lsp_references)
+		local builtin = require("telescope.builtin")
+		vim.keymap.set("n", "gr", function()
+			builtin.lsp_references(require("telescope.themes").get_cursor({
+				layout_config = { height = 20, width = 130, preview_width = 65 },
+			}))
+		end)
 		vim.keymap.set("n", "gd", require("telescope.builtin").lsp_definitions)
 
 		vim.keymap.set("n", "<leader>pf", builtin.find_files, {})
@@ -19,4 +30,5 @@ return {
 		vim.keymap.set("n", "<leader>ss", builtin.builtin, { desc = "[S]earch [S]elect Telescope" })
 		vim.keymap.set("n", "<leader><leader>", builtin.buffers, { desc = "[ ] Find existing buffers" })
 	end,
+	lazy = false,
 }

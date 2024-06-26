@@ -48,12 +48,3 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 		vim.highlight.on_yank()
 	end,
 })
-
-vim.cmd([[ 
-    let g:ftplugin_sql_omni_key = '<C-j>'
-
-    " delete netrw buffer
-    autocmd FileType netrw setl bufhidden=wipe
-
-    let g:netrw_fastbrowse = 0
-]])

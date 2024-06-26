@@ -1,0 +1,56 @@
+nnoremap <Space>pv <Cmd>Ex<CR>
+
+execute "set <M-,>=\e,"
+nnoremap <M-,> <Cmd>bp<CR>
+execute "set <M-.>=\e."
+nnoremap <M-.> <Cmd>bn<CR>
+execute "set <M-c>=\ec"
+nnoremap <M-c> <Cmd>bd<CR>
+
+nnoremap <Space>pf <Cmd>Files<CR>
+nnoremap <C-p> <Cmd>GFiles<CR>
+nnoremap <Space><Space> <Cmd>Buffers<CR>
+nnoremap <Space>ps <Cmd>Commands<CR>
+nnoremap <Space>u <Cmd>UndotreeToggle<CR>
+
+nnoremap <C-a> gg"+yG
+
+nnoremap <C-d> <C-d>zz
+nnoremap <C-u> <C-u>zz
+
+nnoremap n nzzzv
+nnoremap N Nzzzv
+
+let g:netrw_fastbrowse = 0
+
+filetype plugin indent on
+set nowrap
+set incsearch
+set shiftwidth=4
+set tabstop=4
+set expandtab
+set number
+set rnu
+set hidden
+set nocompatible
+set ignorecase
+set showcmd
+set showmode
+let g:netrw_banner = 0 " Hide netrw top bar, toggle with 'I'
+
+call plug#begin()
+
+Plug 'sheerun/vim-polyglot'
+
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'mbbill/undotree'
+
+call plug#end()
+
+colorscheme jellybeans
+
+" transparent background
+hi Normal guibg=NONE ctermbg=NONE
+hi NonText ctermbg=NONE guibg=NONE
+hi LineNr ctermbg=NONE guibg=NONE
