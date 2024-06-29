@@ -10,8 +10,13 @@ nnoremap <M-c> <Cmd>bd<CR>
 nnoremap <Space>pf <Cmd>Files<CR>
 nnoremap <C-p> <Cmd>GFiles<CR>
 nnoremap <Space><Space> <Cmd>Buffers<CR>
-nnoremap <Space>ps <Cmd>Commands<CR>
+" nnoremap <Space>ps <Cmd>Commands<CR>
+
 nnoremap <Space>u <Cmd>UndotreeToggle<CR>
+
+" remove all trailing whitespace https://vi.stackexchange.com/questions/454/whats-the-simplest-way-to-strip-trailing-whitespace-from-all-lines-in-a-file
+execute "set <M-f>=\ef"
+nnoremap <M-f> :%s/\s\+$//e<CR>
 
 nnoremap <C-a> gg"+yG
 
