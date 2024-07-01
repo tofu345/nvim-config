@@ -16,7 +16,7 @@ nnoremap <Space>u <Cmd>UndotreeToggle<CR>
 
 " remove all trailing whitespace https://vi.stackexchange.com/questions/454/whats-the-simplest-way-to-strip-trailing-whitespace-from-all-lines-in-a-file
 execute "set <M-f>=\ef"
-nnoremap <M-f> :%s/\s\+$//e<CR>
+nnoremap <silent> <M-f> :%s/\s\+$//e<CR>
 
 nnoremap <C-a> gg"+yG
 
@@ -42,6 +42,7 @@ set ignorecase
 set showcmd
 set showmode
 let g:netrw_banner = 0 " Hide netrw top bar, toggle with 'I'
+" set laststatus=2 " show status line
 
 call plug#begin()
 
