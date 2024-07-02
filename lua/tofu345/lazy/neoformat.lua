@@ -1,9 +1,3 @@
--- trim whitespace on save
-vim.api.nvim_create_autocmd({ "BufWritePre" }, {
-	pattern = { "*" },
-	command = "%s/\\s\\+$//e",
-})
-
 return {
 	"sbdchd/neoformat",
 	config = function()
@@ -15,7 +9,7 @@ return {
             let g:neoformat_basic_format_align = 0
 
             " trimmming of trailing whitespace globally
-            let g:neoformat_basic_format_trim = 0
+            let g:neoformat_basic_format_trim = 1
 
             " Disable tab to spaces conversion globally
             let g:neoformat_basic_format_retab = 0
