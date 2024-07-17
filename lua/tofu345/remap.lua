@@ -11,7 +11,7 @@ keymap.set("n", "Q", "<nop>")
 keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tms<CR>")
 -- keymap.set({ "n", "i" }, "<C-c>", "<Esc>")
 keymap.set("n", "s", '"_s')
-keymap.set("n", "<A-a>", 'gg"+yG<C-o>')
+keymap.set("n", "<A-a>", 'gg"+yG')
 
 -- keep cursor centered
 keymap.set("n", "<C-d>", "<C-d>zz")

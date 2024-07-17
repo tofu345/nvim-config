@@ -18,7 +18,7 @@ nnoremap <Space>u <Cmd>UndotreeToggle<CR>
 execute "set <M-f>=\ef"
 nnoremap <silent> <M-f> :%s/\s\+$//e<CR>
 
-nnoremap <C-a> gg"+yG
+" nnoremap <C-a> gg"+yG
 
 nnoremap <C-d> <C-d>zz
 nnoremap <C-u> <C-u>zz
