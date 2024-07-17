@@ -1,8 +1,8 @@
-function! neoformat#formatters#typescript#enabled() abort
+function! neoformat#formatters#javascript#enabled() abort
     return ['prettier']
 endfunction
 
-function! neoformat#formatters#typescript#prettier() abort
+function! neoformat#formatters#javascript#prettier() abort
     return {
             \ 'exe': 'prettier',
             \ 'args': ['--stdin-filepath', '"%:p"', '--parser', 'typescript', '--tab-width', '4'],
