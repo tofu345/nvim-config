@@ -24,7 +24,16 @@ return {
 			cmp_lsp.default_capabilities()
 		)
 
-		require("fidget").setup({})
+        require("fidget").setup({
+            progress = {
+                suppress_on_insert = true,   -- Suppress new messages while in insert mode
+                ignore_done_already = true,  -- Ignore new tasks that are already complete
+                -- ignore = { "hls" },                  -- List of LSP servers to ignore
+                display = {
+                    render_limit = 5,          -- How many LSP messages to show at once
+                },
+            },
+        })
 		require("mason").setup()
 		require("mason-lspconfig").setup({
 			ensure_installed = {

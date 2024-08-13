@@ -8,6 +8,7 @@ execute "set <M-c>=\ec"
 nnoremap <M-c> <Cmd>bd<CR>
 
 nnoremap <Space>pf <Cmd>Files<CR>
+nnoremap <Space>ps <Cmd>Ag<CR>
 nnoremap <C-p> <Cmd>GFiles<CR>
 nnoremap <Space><Space> <Cmd>Buffers<CR>
 " nnoremap <Space>ps <Cmd>Commands<CR>
