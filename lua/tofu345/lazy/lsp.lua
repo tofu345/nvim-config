@@ -85,18 +85,6 @@ return {
 			}),
 		})
 
-		vim.keymap.set("n", "K", vim.lsp.buf.hover)
-		vim.keymap.set("n", "<leader>vd", vim.diagnostic.open_float)
-		vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename)
-		vim.keymap.set("n", "<leader>ca", function()
-			vim.lsp.buf.code_action({
-				filter = function(a)
-					return a.isPreferred
-				end,
-				apply = true,
-			})
-		end)
-
 		vim.diagnostic.config({
 			-- update_in_insert = true,
 			float = {
