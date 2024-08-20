@@ -13,7 +13,7 @@ nnoremap <C-p> <Cmd>GFiles<CR>
 nnoremap <Space><Space> <Cmd>Buffers<CR>
 " nnoremap <Space>ps <Cmd>Commands<CR>
 
-nnoremap <Space>u <Cmd>UndotreeToggle<CR>
+" nnoremap <Space>u <Cmd>UndotreeToggle<CR>
 
 " remove all trailing whitespace https://vi.stackexchange.com/questions/454/whats-the-simplest-way-to-strip-trailing-whitespace-from-all-lines-in-a-file
 execute "set <M-f>=\ef"
@@ -51,7 +51,7 @@ Plug 'sheerun/vim-polyglot'
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'mbbill/undotree'
+" Plug 'mbbill/undotree'
 
 call plug#end()
 
