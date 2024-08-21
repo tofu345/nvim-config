@@ -24,16 +24,17 @@ return {
 			cmp_lsp.default_capabilities()
 		)
 
-        require("fidget").setup({
-            progress = {
-                suppress_on_insert = true,   -- Suppress new messages while in insert mode
-                ignore_done_already = true,  -- Ignore new tasks that are already complete
-                -- ignore = { "hls" },                  -- List of LSP servers to ignore
-                display = {
-                    render_limit = 5,          -- How many LSP messages to show at once
-                },
-            },
-        })
+		require("fidget").setup({
+			progress = {
+				suppress_on_insert = true, -- Suppress new messages while in insert mode
+				ignore_done_already = true, -- Ignore new tasks that are already complete
+				-- ignore = { "hls" },                  -- List of LSP servers to ignore
+				display = {
+					render_limit = 5, -- How many LSP messages to show at once
+				},
+			},
+		})
+
 		require("mason").setup()
 		require("mason-lspconfig").setup({
 			ensure_installed = {
@@ -58,6 +59,23 @@ return {
 								},
 							},
 						},
+					})
+				end,
+
+				["gopls"] = function()
+					local util = require("lspconfig.util")
+					require("lspconfig").gopls.setup({
+						root_dir = function(fname)
+							-- see: https://github.com/neovim/nvim-lspconfig/issues/804
+							local mod_cache = vim.trim(vim.fn.system("go env GOMODCACHE"))
+							if fname:sub(1, #mod_cache) == mod_cache then
+								local clients = vim.lsp.get_active_clients({ name = "gopls" })
+								if #clients > 0 then
+									return clients[#clients].config.root_dir
+								end
+							end
+							return util.root_pattern("go.work")(fname) or util.root_pattern("go.mod", ".git")(fname)
+						end,
 					})
 				end,
 			},
