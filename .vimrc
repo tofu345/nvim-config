@@ -27,9 +27,11 @@ nnoremap <C-u> <C-u>zz
 nnoremap n nzzzv
 nnoremap N Nzzzv
 
+imap <Tab> <Space><Space><Space><Space>
+
 let g:netrw_fastbrowse = 0
 
-filetype plugin indent on
+" filetype plugin indent on
 set nowrap
 set incsearch
 set shiftwidth=4
@@ -51,7 +53,6 @@ Plug 'sheerun/vim-polyglot'
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-" Plug 'mbbill/undotree'
 
 call plug#end()
 
