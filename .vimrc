@@ -31,12 +31,16 @@ imap <Tab> <Space><Space><Space><Space>
 
 let g:netrw_fastbrowse = 0
 
-" filetype plugin indent on
+filetype plugin indent on
 set nowrap
 set incsearch
+
+set noautoindent
 set shiftwidth=4
 set tabstop=4
+set softtabstop=4
 set expandtab
+
 set number
 set rnu
 set hidden

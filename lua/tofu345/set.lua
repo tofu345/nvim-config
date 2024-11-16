@@ -3,9 +3,9 @@ local set = vim.opt
 vim.lsp.set_log_level("off")
 
 vim.g.have_nerd_font = false
-set.showmode = true -- show if in insert, visual modes etc.
-set.expandtab = true
 
+vim.opt.autochdir = false
+set.showmode = true -- show if in insert, visual modes etc.
 set.signcolumn = "yes"
 
 set.nu = true
@@ -14,12 +14,10 @@ set.relativenumber = true
 set.ignorecase = true
 set.smartcase = true
 
+set.expandtab = true
 set.tabstop = 4
 set.softtabstop = 4
 set.shiftwidth = 4
-set.expandtab = true
-
-set.smartindent = true
 
 set.wrap = false
 
