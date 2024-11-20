@@ -50,3 +50,18 @@ vim.cmd([[
  
     let g:ftplugin_sql_omni_key = '<C-j>'
 ]])
+
+-- Fix 'file has changed since reading it!!!' warning
+-- by reading file from disk, and replacing with new contents
+-- https://vi.stackexchange.com/a/15304
+function VimIsBeingStupidAgain()
+	vim.cmd([[
+        let lastline = line('$')
+        let bufcontents = getline(1, lastline)
+        edit!
+        call setline(1, bufcontents)
+        if line('$') > lastline
+            execute lastline+1.',$:d _'
+        endif
+    ]])
+end

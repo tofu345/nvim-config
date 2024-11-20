@@ -24,7 +24,8 @@ keymap.set("n", "<leader>.", "<Cmd>tabn<CR>")
 keymap.set("n", "<leader>n", "<Cmd>cnext<CR>")
 keymap.set("n", "<leader>N", "<Cmd>cprev<CR>")
 
-keymap.set("n", "<leader>pv", "<Cmd>Ex<CR>")
+-- keymap.set("n", "<leader>pv", "<Cmd>Ex<CR>")
+keymap.set("n", "<leader>pv", "<Cmd>Oil<CR>")
 
 -- Move highlighted text
 keymap.set("v", "J", ":m '>+1<CR>gv=gv")
