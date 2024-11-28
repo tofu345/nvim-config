@@ -3,9 +3,11 @@ return {
 	---@module 'oil'
 	---@type oil.SetupOpts
 	opts = {
-        delete_to_trash = false,
-    },
+		delete_to_trash = true,
+		view_options = {
+			show_hidden = true, -- Show files and directories that start with "."
+		},
+	},
 	-- Optional dependencies
-	dependencies = { { "echasnovski/mini.icons", opts = {} } },
-	-- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if prefer nvim-web-devicons
+	dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if prefer nvim-web-devicons
 }
