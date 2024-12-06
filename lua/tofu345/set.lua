@@ -44,7 +44,10 @@ vim.cmd([[
     let g:foldmethod = "manual"
 
     " beam cursor insert mode style
-    :set guicursor=i-ci:ver30-iCursor-blinkwait300-blinkon200-blinkoff150
+    " :set guicursor=i-ci:ver30-iCursor-blinkwait300-blinkon200-blinkoff150
+
+    " beam cursor block
+    :set guicursor=
 
     :set textwidth=0
  
