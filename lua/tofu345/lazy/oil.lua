@@ -9,6 +9,17 @@ return {
 		},
 		keymaps = {
 			["g?"] = "actions.show_help",
+			["gd"] = {
+				desc = "Toggle file detail view",
+				callback = function()
+					local detail = not detail
+					if detail then
+						require("oil").set_columns({ "icon", "permissions", "size", "mtime" })
+					else
+						require("oil").set_columns({ "icon" })
+					end
+				end,
+			},
 			["<CR>"] = "actions.select",
 			["<C-s>"] = { "actions.select", opts = { vertical = true }, desc = "Open the entry in a vertical split" },
 			["<C-h>"] = {
