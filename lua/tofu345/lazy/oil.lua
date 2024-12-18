@@ -12,7 +12,7 @@ return {
 			["gd"] = {
 				desc = "Toggle file detail view",
 				callback = function()
-					local detail = not detail
+					detail = not detail
 					if detail then
 						require("oil").set_columns({ "icon", "permissions", "size", "mtime" })
 					else
