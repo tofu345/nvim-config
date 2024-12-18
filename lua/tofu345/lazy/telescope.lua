@@ -12,13 +12,13 @@ return {
 		})
 
 		local builtin = require("telescope.builtin")
-		vim.keymap.set("n", "gr", builtin.lsp_references)
-		vim.keymap.set("n", "gd", builtin.lsp_definitions)
+		vim.keymap.set("n", "gr", builtin.lsp_references, { desc = "Show Lsp References" })
+		vim.keymap.set("n", "gd", builtin.lsp_definitions, { desc = "Show Lsp Definition" })
 
-		vim.keymap.set("n", "<leader>pf", builtin.find_files, {})
-		vim.keymap.set("n", "<C-p>", builtin.git_files, {})
-		vim.keymap.set("n", "<leader>ps", builtin.live_grep, {})
-		vim.keymap.set("n", "<leader>ph", builtin.help_tags, {})
+		vim.keymap.set("n", "<leader>pf", builtin.find_files, {}, { desc = "File Finder" })
+		vim.keymap.set("n", "<C-p>", builtin.git_files, {}, { desc = "Git Files" })
+		vim.keymap.set("n", "<leader>ps", builtin.live_grep, {}, { desc = "Live Grep" })
+		vim.keymap.set("n", "<leader>ph", builtin.help_tags, {}, { desc = "Help" })
 
 		vim.keymap.set("n", "<leader>sk", builtin.keymaps, { desc = "[S]earch [K]eymaps" })
 		vim.keymap.set("n", "<leader>ss", builtin.builtin, { desc = "[S]earch [S]elect Telescope" })
