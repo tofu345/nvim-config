@@ -3,6 +3,10 @@ local keymap = vim.keymap
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+-- cmdline-editing
+keymap.set("c", "<C-h>", "<left>")
+keymap.set("c", "<C-l>", "<right>")
+
 keymap.set("n", "Q", "<nop>")
 keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tms<CR>", { desc = "Open tmux-sessionizer" })
 -- keymap.set({ "n", "i" }, "<C-c>", "<Esc>")

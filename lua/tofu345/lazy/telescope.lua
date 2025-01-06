@@ -15,7 +15,9 @@ return {
 		vim.keymap.set("n", "gr", builtin.lsp_references, { desc = "Show Lsp References" })
 		vim.keymap.set("n", "gd", builtin.lsp_definitions, { desc = "Show Lsp Definition" })
 
-		vim.keymap.set("n", "<leader>pf", builtin.find_files, {}, { desc = "File Finder" })
+		vim.keymap.set("n", "<leader>pf", function()
+			builtin.find_files({ no_ignore = true })
+		end, {}, { desc = "File Finder" })
 		vim.keymap.set("n", "<C-p>", builtin.git_files, {}, { desc = "Git Files" })
 		vim.keymap.set("n", "<leader>ps", builtin.live_grep, {}, { desc = "Live Grep" })
 		vim.keymap.set("n", "<leader>ph", builtin.help_tags, {}, { desc = "Help" })
