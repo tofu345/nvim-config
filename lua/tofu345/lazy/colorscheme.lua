@@ -2,6 +2,7 @@ return {
 	"rktjmp/lush.nvim",
 	dependencies = {
 		"rose-pine/neovim",
+		"metalelf0/jellybeans-nvim",
 	},
 	config = function()
 		require("rose-pine").setup({

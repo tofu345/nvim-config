@@ -1,7 +1,7 @@
 return {
 	"sbdchd/neoformat",
 	config = function()
-		vim.keymap.set("n", "<A-f>", "<Cmd>Neoformat<CR>")
+		vim.keymap.set("n", "<A-f>", "<Cmd>Neoformat<CR>", { desc = "Neoformat format" })
 
 		vim.cmd([[
             " 0 = off, 1 = on

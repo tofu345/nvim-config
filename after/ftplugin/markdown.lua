@@ -5,4 +5,6 @@ vim.bo.shiftwidth = 2
 vim.bo.softtabstop = 2
 vim.bo.tw = 79 -- auto break
 
+vim.opt.linebreak = true
+
 vim.keymap.set("n", "<A-p>", "<Cmd>PasteImg<CR>")

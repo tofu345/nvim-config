@@ -1,10 +1,13 @@
 local set = vim.opt
 
-vim.lsp.set_log_level("off")
-
+vim.g.foldmethod = "manual"
 vim.g.have_nerd_font = false
+-- vim.g.guicursor = "n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20"
+vim.cmd([[
+    :set guicursor=
+]])
 
-vim.opt.autochdir = false
+set.autochdir = false
 set.showmode = true -- show if in insert, visual modes etc.
 set.signcolumn = "yes"
 
@@ -37,20 +40,9 @@ set.isfname:append("@-@")
 set.updatetime = 50
 
 vim.cmd([[
-    let g:netrw_fastbrowse = 0
-    let g:netrw_banner = 0 " Hide netrw top bar
+    " let g:netrw_fastbrowse = 0
+    " let g:netrw_banner = 0 " Hide netrw top bar
     " let g:netrw_liststyle = 3
-
-    let g:foldmethod = "manual"
-
-    " beam cursor insert mode style
-    " :set guicursor=i-ci:ver30-iCursor-blinkwait300-blinkon200-blinkoff150
-
-    " beam cursor block
-    :set guicursor=
-
-    :set textwidth=0
- 
     let g:ftplugin_sql_omni_key = '<C-j>'
 ]])
 
@@ -69,7 +61,7 @@ function VimIsBeingStupidAgain()
     ]])
 end
 
--- Spellcheck 
+-- Spellcheck
 -- https://www.reddit.com/r/neovim/comments/1fwqc8t/comment/lqh201n/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
 local spell_types = { "markdown" }
 vim.opt.spell = false

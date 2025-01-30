@@ -1,7 +1,5 @@
 return {
 	"stevearc/oil.nvim",
-	---@module 'oil'
-	---@type oil.SetupOpts
 	opts = {
 		delete_to_trash = true,
 		view_options = {
@@ -12,8 +10,8 @@ return {
 			["gd"] = {
 				desc = "Toggle file detail view",
 				callback = function()
-					detail = not detail
-					if detail then
+					OIL_DETAIL_VIEW = not OIL_DETAIL_VIEW
+					if OIL_DETAIL_VIEW then
 						require("oil").set_columns({ "icon", "permissions", "size", "mtime" })
 					else
 						require("oil").set_columns({ "icon" })

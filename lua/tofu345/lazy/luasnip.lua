@@ -16,6 +16,6 @@ return {
 
 		vim.keymap.set({ "i" }, "<C-K>", function()
 			require("luasnip").expand()
-		end, { silent = true })
+		end, { silent = true }, { desc = "LuaSnap Expand" })
 	end,
 }

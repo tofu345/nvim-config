@@ -3,9 +3,13 @@ local keymap = vim.keymap
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+keymap.set("t", "<Esc>", "<C-\\><C-n>")
+
 -- cmdline-editing
-keymap.set("c", "<C-h>", "<left>")
-keymap.set("c", "<C-l>", "<right>")
+keymap.set("c", "<C-h>", "<left>", { desc = "Left Arrow - Command Line" })
+keymap.set("c", "<C-j>", "<down>", { desc = "Down Arrow - Command Line" })
+keymap.set("c", "<C-k>", "<up>", { desc = "Up Arrow - Command Line" })
+keymap.set("c", "<C-l>", "<right>", { desc = "Right Arrow - Command Line" })
 
 keymap.set("n", "Q", "<nop>")
 keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tms<CR>", { desc = "Open tmux-sessionizer" })

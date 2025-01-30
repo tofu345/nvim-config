@@ -1,3 +1,34 @@
+vim.lsp.set_log_level("off")
+
+local augroup = vim.api.nvim_create_augroup
+local Group = augroup("user_group", {})
+local autocmd = vim.api.nvim_create_autocmd
+
+autocmd("LspAttach", {
+	group = Group,
+	callback = function(e)
+		local opts = { buffer = e.buf }
+		vim.keymap.set("n", "K", vim.lsp.buf.hover, opts, { desc = "Lsp Hover" })
+		vim.keymap.set("n", "<leader>vd", vim.diagnostic.open_float, opts, { desc = "Lsp Diagnostic Float" })
+		vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, opts, { desc = "Lsp Rename" })
+		vim.keymap.set("n", "<leader>vrr", function()
+			vim.lsp.buf.references()
+		end, opts, { desc = "Lsp References" })
+		vim.keymap.set("n", "<leader>ca", function()
+			vim.lsp.buf.code_action({
+				filter = function(a)
+					return a.isPreferred
+				end,
+				apply = true,
+			})
+		end, opts, { desc = "Lsp Code Action" })
+		vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts, { desc = "Lsp Go to Definition" })
+		vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, opts, { desc = "Lsp Signature Help" })
+		vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts, { desc = "Lsp Diagnostic Go To Prev" })
+		vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts, { desc = "Lsp Diagnostic Go To Prev" })
+	end,
+})
+
 -- yoinked from the primagens init.lua https://github.com/ThePrimeagen/init.lua
 return {
 	"neovim/nvim-lspconfig",

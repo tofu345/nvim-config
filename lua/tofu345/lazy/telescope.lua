@@ -20,8 +20,8 @@ return {
 		end, {}, { desc = "File Finder" })
 		vim.keymap.set("n", "<C-p>", builtin.git_files, {}, { desc = "Git Files" })
 		vim.keymap.set("n", "<leader>ps", builtin.live_grep, {}, { desc = "Live Grep" })
-		vim.keymap.set("n", "<leader>ph", builtin.help_tags, {}, { desc = "Help" })
 
+		vim.keymap.set("n", "<leader>sh", builtin.help_tags, {}, { desc = "Help" })
 		vim.keymap.set("n", "<leader>sk", builtin.keymaps, { desc = "[S]earch [K]eymaps" })
 		vim.keymap.set("n", "<leader>ss", builtin.builtin, { desc = "[S]earch [S]elect Telescope" })
 		vim.keymap.set("n", "<leader><leader>", builtin.buffers, { desc = "[ ] Find existing buffers" })
