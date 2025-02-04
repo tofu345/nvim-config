@@ -18,7 +18,7 @@ set.ignorecase = true
 set.smartcase = true
 
 set.expandtab = true
-set.tabstop = 4
+set.tabstop = 8
 set.softtabstop = 4
 set.shiftwidth = 4
 
@@ -45,21 +45,6 @@ vim.cmd([[
     " let g:netrw_liststyle = 3
     let g:ftplugin_sql_omni_key = '<C-j>'
 ]])
-
--- Fix 'file has changed since reading it!!!' warning
--- by reading file from disk, and replacing with new contents
--- https://vi.stackexchange.com/a/15304
-function VimIsBeingStupidAgain()
-	vim.cmd([[
-        let lastline = line('$')
-        let bufcontents = getline(1, lastline)
-        edit!
-        call setline(1, bufcontents)
-        if line('$') > lastline
-            execute lastline+1.',$:d _'
-        endif
-    ]])
-end
 
 -- Spellcheck
 -- https://www.reddit.com/r/neovim/comments/1fwqc8t/comment/lqh201n/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button

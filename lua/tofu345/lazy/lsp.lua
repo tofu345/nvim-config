@@ -78,6 +78,12 @@ return {
 					})
 				end,
 
+				["hls"] = function()
+					require("lspconfig")["hls"].setup({
+						filetypes = { "haskell", "lhaskell", "cabal" },
+					})
+				end,
+
 				["lua_ls"] = function()
 					local lspconfig = require("lspconfig")
 					lspconfig.lua_ls.setup({

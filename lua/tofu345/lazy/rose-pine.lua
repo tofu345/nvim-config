@@ -1,9 +1,8 @@
 return {
-	"rktjmp/lush.nvim",
-	dependencies = {
-		"rose-pine/neovim",
-		"metalelf0/jellybeans-nvim",
-	},
+	"rose-pine/neovim",
+	name = "rose-pine",
+	lazy = false,
+	dependencies = {},
 	config = function()
 		require("rose-pine").setup({
 			variant = "main",
@@ -20,7 +19,7 @@ return {
 				transparency = true,
 			},
 			highlight_groups = {
-				-- Comment = { italic = true },
+				Comment = { italic = false },
 			},
 			groups = {
 				border = "muted",
@@ -54,7 +53,7 @@ return {
 			},
 		})
 
-		vim.cmd("colorscheme rose-pine-main")
+		vim.cmd("colorscheme rose-pine")
 
 		-- Make background transparent
 		-- vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
