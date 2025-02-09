@@ -2,7 +2,10 @@ return {
 	"rose-pine/neovim",
 	name = "rose-pine",
 	lazy = false,
-	dependencies = {},
+	dependencies = {
+		"rktjmp/lush.nvim",
+		"metalelf0/jellybeans-nvim",
+	},
 	config = function()
 		require("rose-pine").setup({
 			variant = "main",

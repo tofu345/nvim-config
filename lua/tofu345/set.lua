@@ -7,6 +7,9 @@ vim.cmd([[
     :set guicursor=
 ]])
 
+-- set.list = true
+-- set.listchars = "tab:> ,trail:-,nbsp:+"
+
 set.autochdir = false
 set.showmode = true -- show if in insert, visual modes etc.
 set.signcolumn = "yes"
@@ -18,7 +21,7 @@ set.ignorecase = true
 set.smartcase = true
 
 set.expandtab = true
-set.tabstop = 8
+set.tabstop = 4
 set.softtabstop = 4
 set.shiftwidth = 4
 

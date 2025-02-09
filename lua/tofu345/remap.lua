@@ -5,15 +5,10 @@ vim.g.maplocalleader = " "
 
 keymap.set("t", "<Esc>", "<C-\\><C-n>")
 
--- cmdline-editing
-keymap.set("c", "<C-h>", "<left>", { desc = "Left Arrow - Command Line" })
-keymap.set("c", "<C-j>", "<down>", { desc = "Down Arrow - Command Line" })
-keymap.set("c", "<C-k>", "<up>", { desc = "Up Arrow - Command Line" })
-keymap.set("c", "<C-l>", "<right>", { desc = "Right Arrow - Command Line" })
+keymap.set("c", "<M-b>", "<S-Left>", { desc = "One WORD Left" })
+keymap.set("c", "<M-e>", "<S-Right>", { desc = "One WORD Right" })
 
-keymap.set("n", "Q", "<nop>")
 keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tms<CR>", { desc = "Open tmux-sessionizer" })
--- keymap.set({ "n", "i" }, "<C-c>", "<Esc>")
 keymap.set("n", "s", '"_s')
 keymap.set("n", "<A-a>", 'gg"+yG', { desc = "Copy Entire File into '+' Register (System Clipboard)" })
 
@@ -39,7 +34,7 @@ keymap.set("n", "<leader>pv", "<Cmd>Oil<CR>", { desc = "Open File Explorer" })
 keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move Highlighted Text Upwards" })
 keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move Highlighted Text Downwards" })
 
-keymap.set("x", "<leader>p", [["_dP]], { desc = "Paste without overwriting '\"' Register" })
+keymap.set("x", "<leader>p", [["_dP]], { desc = "Paste without overwriting unnamed Register" })
 -- copy to system clipboard
 keymap.set({ "n", "v" }, "<leader>y", [["+y]], { desc = "Copy into System Clipboard" }) -- next greatest remap ever : asbjornHaland
 
