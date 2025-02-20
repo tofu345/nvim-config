@@ -13,8 +13,8 @@ return {
 
 		local builtin = require("telescope.builtin")
 		local themes = require("telescope.themes")
-		vim.keymap.set("n", "gr", builtin.lsp_references, { desc = "Show Lsp References" })
-		vim.keymap.set("n", "gd", builtin.lsp_definitions, { desc = "Show Lsp Definition" })
+
+		vim.keymap.set("n", "<leader><leader>", builtin.buffers, { desc = "[ ] Find existing buffers" })
 
 		vim.keymap.set("n", "<leader>pf", function()
 			builtin.find_files({ no_ignore = true })
@@ -27,7 +27,6 @@ return {
 		vim.keymap.set("n", "<leader>sh", builtin.help_tags, {}, { desc = "Help" })
 		vim.keymap.set("n", "<leader>sk", builtin.keymaps, { desc = "[S]earch [K]eymaps" })
 		vim.keymap.set("n", "<leader>ss", builtin.builtin, { desc = "[S]earch [S]elect Telescope" })
-		vim.keymap.set("n", "<leader><leader>", builtin.buffers, { desc = "[ ] Find existing buffers" })
 	end,
 	lazy = false,
 }

@@ -10,11 +10,10 @@ keymap.set("c", "<M-e>", "<S-Right>", { desc = "One WORD Right" })
 
 keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tms<CR>", { desc = "Open tmux-sessionizer" })
 keymap.set("n", "s", '"_s')
-keymap.set("n", "<A-a>", 'gg"+yG', { desc = "Copy Entire File into '+' Register (System Clipboard)" })
 
 -- keep cursor centered
-keymap.set("n", "<C-d>", "<C-d>zz")
-keymap.set("n", "<C-u>", "<C-u>zz")
+-- keymap.set("n", "<C-d>", "<C-d>zz")
+-- keymap.set("n", "<C-u>", "<C-u>zz")
 keymap.set("n", "n", "nzzzv")
 keymap.set("n", "N", "Nzzzv")
 
