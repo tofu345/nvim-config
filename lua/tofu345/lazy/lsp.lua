@@ -4,6 +4,17 @@ local augroup = vim.api.nvim_create_augroup
 local Group = augroup("user_group", {})
 local autocmd = vim.api.nvim_create_autocmd
 
+function EnableCmp()
+	require("cmp").setup.buffer({ enabled = true })
+end
+
+function DisableCmp()
+	require("cmp").setup.buffer({ enabled = false })
+
+	-- Global
+	-- require("cmp").setup({ enabled = false })
+end
+
 autocmd("LspAttach", {
 	group = Group,
 	callback = function(e)

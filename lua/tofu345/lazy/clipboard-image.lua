@@ -1,5 +1,6 @@
 return {
-	"ekickx/clipboard-image.nvim",
+	-- "ekickx/clipboard-image.nvim",
+	"dfendr/clipboard-image.nvim", -- fork with patch
 	ft = "markdown",
 	opts = {
 		default = {
