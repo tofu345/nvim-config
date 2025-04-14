@@ -1,11 +1,11 @@
 nnoremap <Space>pv <Cmd>Ex<CR>
 
-execute "set <M-,>=\e,"
-nnoremap <M-,> <Cmd>bp<CR>
-execute "set <M-.>=\e."
-nnoremap <M-.> <Cmd>bn<CR>
-execute "set <M-c>=\ec"
-nnoremap <M-c> <Cmd>bd<CR>
+" execute "set <M-,>=\e,"
+" nnoremap <M-,> <Cmd>bp<CR>
+" execute "set <M-.>=\e."
+" nnoremap <M-.> <Cmd>bn<CR>
+" execute "set <M-c>=\ec"
+" nnoremap <M-c> <Cmd>bd<CR>
 
 nnoremap <Space>pf <Cmd>Files<CR>
 nnoremap <Space>ps <Cmd>Ag<CR>

@@ -3,6 +3,7 @@ return {
 	name = "rose-pine",
 	lazy = false,
 	dependencies = {
+		"Shatur/neovim-ayu",
 		"rktjmp/lush.nvim",
 		"metalelf0/jellybeans-nvim",
 	},
@@ -19,7 +20,7 @@ return {
 			styles = {
 				bold = true,
 				italic = false,
-				transparency = true,
+				transparency = false,
 			},
 			highlight_groups = {
 				Comment = { italic = false },
@@ -56,7 +57,7 @@ return {
 			},
 		})
 
-		vim.cmd("colorscheme rose-pine")
+		vim.cmd("colorscheme rose-pine-main")
 
 		-- Make background transparent
 		-- vim.api.nvim_set_hl(0, "Normal", { bg = "none" })

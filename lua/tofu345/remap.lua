@@ -18,11 +18,13 @@ keymap.set("n", "n", "nzzzv")
 keymap.set("n", "N", "Nzzzv")
 
 -- nav
-keymap.set("n", "<A-c>", "<Cmd>bd<CR>", { desc = "Close Current Buffer" })
-keymap.set("n", "<A-,>", "<Cmd>bprev<CR>", { desc = "Navigate to Previous Buffer" })
-keymap.set("n", "<A-.>", "<Cmd>bnext<CR>", { desc = "Navigate to Next Buffer" })
+-- keymap.set("n", "<A-c>", "<Cmd>bd<CR>", { desc = "Close Current Buffer" })
+-- keymap.set("n", "<A-,>", "<Cmd>bprev<CR>", { desc = "Navigate to Previous Buffer" })
+-- keymap.set("n", "<A-.>", "<Cmd>bnext<CR>", { desc = "Navigate to Next Buffer" })
+
 keymap.set("n", "<leader>,", "<Cmd>tabp<CR>", { desc = "Navigate to Previous Tab" })
 keymap.set("n", "<leader>.", "<Cmd>tabn<CR>", { desc = "Navigate to Next Tab" })
+
 keymap.set("n", "<leader>N", "<Cmd>cprev<CR>", { desc = "Navigate to Previous QuickFix" })
 keymap.set("n", "<leader>n", "<Cmd>cnext<CR>", { desc = "Navigate to Next QuickFix" })
 
@@ -41,6 +43,6 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	desc = "Highlight when yanking (copying) text",
 	group = vim.api.nvim_create_augroup("highlight-yank", { clear = true }),
 	callback = function()
-		vim.highlight.on_yank()
+		vim.hl.on_yank()
 	end,
 })
