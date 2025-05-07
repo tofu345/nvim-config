@@ -40,7 +40,7 @@ return {
 		}
 
 		vim.api.nvim_create_autocmd("LspAttach", {
-			group = vim.api.nvim_create_augroup("user_group", {}),
+			group = vim.api.nvim_create_augroup("dap_user_keymaps", { clear = true }),
 			callback = function(e)
 				vim.keymap.set("n", "<space>b", dap.toggle_breakpoint, { desc = "Dap - Toggle Breakpoint" })
 				vim.keymap.set("n", "<space>gb", dap.run_to_cursor, { desc = "Dap - Run to Cursor" })

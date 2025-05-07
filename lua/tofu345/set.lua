@@ -1,11 +1,7 @@
 local set = vim.opt
 
 vim.g.foldmethod = "manual"
-vim.g.have_nerd_font = false
--- vim.g.guicursor = "n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20"
-vim.cmd([[
-    :set guicursor=
-]])
+vim.g.have_nerd_font = true
 
 -- set.list = true
 -- set.listchars = "tab:> ,trail:-,nbsp:+"

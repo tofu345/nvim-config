@@ -3,10 +3,12 @@ local keymap = vim.keymap
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
-keymap.set("t", "<Esc>", "<C-\\><C-n>")
+keymap.set("t", "<C-[>", "<C-\\><C-n>")
 
 keymap.set("c", "<M-b>", "<S-Left>", { desc = "One WORD Left" })
 keymap.set("c", "<M-e>", "<S-Right>", { desc = "One WORD Right" })
+keymap.set("c", "<C-p>", "<Up>")
+keymap.set("c", "<C-n>", "<Down>")
 
 keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tms<CR>", { desc = "Open tmux-sessionizer" })
 keymap.set("n", "s", '"_s')
@@ -29,7 +31,8 @@ keymap.set("n", "<leader>N", "<Cmd>cprev<CR>", { desc = "Navigate to Previous Qu
 keymap.set("n", "<leader>n", "<Cmd>cnext<CR>", { desc = "Navigate to Next QuickFix" })
 
 -- keymap.set("n", "<leader>pv", "<Cmd>Ex<CR>")
-keymap.set("n", "<leader>pv", "<Cmd>Oil<CR>", { desc = "Open File Explorer" })
+vim.keymap.set("n", "<leader>pv", "<Cmd>Oil<CR>", { desc = "Open File Explorer" })
+-- vim.keymap.set("n", "<leader>fv", require("oil").open_float, { desc = "Open File Explorer in Float" })
 
 -- Move highlighted text
 keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move Highlighted Text Upwards" })

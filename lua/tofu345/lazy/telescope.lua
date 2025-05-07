@@ -17,7 +17,7 @@ return {
 		vim.keymap.set("n", "<leader><leader>", builtin.buffers, { desc = "[ ] Find existing buffers" })
 
 		vim.keymap.set("n", "<leader>pf", function()
-			builtin.find_files({ no_ignore = true })
+			builtin.find_files({ no_ignore = true, hidden = true  })
 		end, {}, { desc = "File Finder" })
 		vim.keymap.set("n", "<C-p>", builtin.git_files, {}, { desc = "Git Files" })
 		vim.keymap.set("n", "<leader>ps", function()

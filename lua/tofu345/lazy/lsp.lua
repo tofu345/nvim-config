@@ -1,6 +1,6 @@
 vim.lsp.set_log_level("off")
 
-local user_group = vim.api.nvim_create_augroup("lsp_keymaps", { clear = true })
+local user_group = vim.api.nvim_create_augroup("lsp_user_keymaps", { clear = true })
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = user_group,
 	callback = function(e)
@@ -31,9 +31,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			vim.diagnostic.jump({ count = -1, float = true })
 		end, { buffer = e.buf, desc = "Lsp Diagnostic Go To Prev" })
 
-		vim.keymap.set("i", "<C-h>", function()
-			vim.lsp.buf.signature_help({ border = "rounded" })
-		end, { buffer = e.buf, desc = "Lsp Signature Help" })
+		-- Use <C-h> as backspace
+		-- vim.keymap.set("i", "<C-h>", function()
+		-- 	vim.lsp.buf.signature_help({ border = "rounded" })
+		-- end, { buffer = e.buf, desc = "Lsp Signature Help" })
 	end,
 })
 
