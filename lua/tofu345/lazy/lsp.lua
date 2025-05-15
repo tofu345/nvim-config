@@ -79,12 +79,23 @@ return {
 			},
 		})
 
+        -- would not run in require("mason-lspconfig").setup()
+		require("lspconfig").lua_ls.setup({
+			capabilities = capabilities,
+			settings = {
+				Lua = {
+					diagnostics = {
+						globals = { "vim" },
+					},
+				},
+			},
+		})
+
 		require("mason").setup()
 		require("mason-lspconfig").setup({
 			automatic_installation = false,
-			ensure_installed = {
-				"lua_ls",
-			},
+			ensure_installed = {},
+            automatic_enable = {},
 			handlers = {
 				function(server_name) -- default handler (optional)
 					require("lspconfig")[server_name].setup({
@@ -99,8 +110,7 @@ return {
 				end,
 
 				["lua_ls"] = function()
-					local lspconfig = require("lspconfig")
-					lspconfig.lua_ls.setup({
+					require("lspconfig").lua_ls.setup({
 						capabilities = capabilities,
 						settings = {
 							Lua = {
