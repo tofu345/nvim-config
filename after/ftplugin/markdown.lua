@@ -7,3 +7,5 @@ vim.bo.tw = 79 -- auto break
 vim.opt.linebreak = true
 
 vim.keymap.set("n", "<A-p>", "<Cmd>PasteImg<CR>", { buffer = true })
+
+vim.fn.setreg("t", "####")

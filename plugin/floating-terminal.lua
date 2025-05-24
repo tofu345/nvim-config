@@ -42,7 +42,7 @@ local function create_floating_window(opts)
 	local win = vim.api.nvim_open_win(buf, true, floating_config())
 
 	-- Enter insert mode
-	vim.cmd("startinsert")
+	-- vim.cmd("startinsert")
 
 	return { buf = buf, win = win }
 end
