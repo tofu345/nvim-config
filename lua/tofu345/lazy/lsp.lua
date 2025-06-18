@@ -4,6 +4,9 @@ local user_group = vim.api.nvim_create_augroup("lsp_user_keymaps", { clear = tru
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = user_group,
 	callback = function(e)
+        local builtin = require("telescope.builtin")
+        local themes = require("telescope.themes")
+
 		-- local opts = { buffer = e.buf }
 		vim.keymap.set("n", "K", function()
 			vim.lsp.buf.hover({ border = "rounded" })
@@ -12,9 +15,11 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		vim.keymap.set("n", "<leader>vd", vim.diagnostic.open_float, { buffer = e.buf, desc = "Lsp Diagnostic Float" })
 		vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, { buffer = e.buf, desc = "Lsp Rename" })
 		vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = e.buf, desc = "Lsp Go to Definition" })
-		vim.keymap.set("n", "gr", function()
-			vim.lsp.buf.references()
-		end, { buffer = e.buf, desc = "Lsp References" })
+
+		vim.keymap.set("n", "grr", function()
+            builtin.lsp_references(themes.get_ivy({ height = 0.5 }))
+        end, { buffer = e.buf, desc = "Lsp References" })
+
 		vim.keymap.set("n", "<leader>ca", function()
 			vim.lsp.buf.code_action({
 				filter = function(a)
@@ -25,10 +30,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		end, { buffer = e.buf, desc = "Lsp Code Action" })
 
 		vim.keymap.set("n", "[d", function()
-			vim.diagnostic.jump({ count = 1, float = true })
+			vim.diagnostic.jump({ count = -1, float = true })
 		end, { buffer = e.buf, desc = "Lsp Diagnostic Go To Next" })
 		vim.keymap.set("n", "]d", function()
-			vim.diagnostic.jump({ count = -1, float = true })
+			vim.diagnostic.jump({ count = 1, float = true })
 		end, { buffer = e.buf, desc = "Lsp Diagnostic Go To Prev" })
 
 		-- Use <C-h> as backspace

@@ -5,6 +5,8 @@ vim.g.maplocalleader = " "
 
 keymap.set("t", "<C-[>", "<C-\\><C-n>")
 
+keymap.set("n", "<C-S-@>", "<C-^>") -- :|
+
 keymap.set("c", "<M-b>", "<S-Left>", { desc = "One WORD Left" })
 keymap.set("c", "<M-e>", "<S-Right>", { desc = "One WORD Right" })
 keymap.set("c", "<C-p>", "<Up>")
@@ -13,13 +15,12 @@ keymap.set("c", "<C-n>", "<Down>")
 keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tms<CR>", { desc = "Open tmux-sessionizer" })
 
 -- nav
-keymap.set("n", "<leader>l", ":ls<CR>:b<space>", { desc = "Switch between buffers" })
 keymap.set("n", "<leader>,", "<Cmd>tabp<CR>", { desc = "Navigate to Previous Tab" })
 keymap.set("n", "<leader>.", "<Cmd>tabn<CR>", { desc = "Navigate to Next Tab" })
 keymap.set("n", "<leader>N", "<Cmd>cprev<CR>", { desc = "Navigate to Previous QuickFix" })
 keymap.set("n", "<leader>n", "<Cmd>cnext<CR>", { desc = "Navigate to Next QuickFix" })
 
--- keymap.set("n", "<leader>pv", "<Cmd>Ex<CR>")
+-- keymap.set("n", "<leader>pv", "<Cmd>Ex<CR>", { desc = "Open netrw" })
 vim.keymap.set("n", "<leader>pv", "<Cmd>Oil<CR>", { desc = "Open File Explorer" })
 
 keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move Highlighted Text Upwards" })

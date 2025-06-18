@@ -30,6 +30,11 @@ set.undofile = true
 set.isfname:append("@-@")
 set.updatetime = 50
 
+vim.cmd([[
+    let g:netrw_banner = 0
+    let g:netrw_altfile = 1
+]])
+
 -- Spellcheck
 -- https://www.reddit.com/r/neovim/comments/1fwqc8t/comment/lqh201n/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
 local spell_types = { "markdown" }
