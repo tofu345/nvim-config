@@ -20,9 +20,6 @@ keymap.set("n", "<leader>.", "<Cmd>tabn<CR>", { desc = "Navigate to Next Tab" })
 keymap.set("n", "<leader>N", "<Cmd>cprev<CR>", { desc = "Navigate to Previous QuickFix" })
 keymap.set("n", "<leader>n", "<Cmd>cnext<CR>", { desc = "Navigate to Next QuickFix" })
 
--- keymap.set("n", "<leader>pv", "<Cmd>Ex<CR>", { desc = "Open netrw" })
-vim.keymap.set("n", "<leader>pv", "<Cmd>Oil<CR>", { desc = "Open File Explorer" })
-
 keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move Highlighted Text Upwards" })
 keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move Highlighted Text Downwards" })
 

@@ -49,6 +49,7 @@ set ignorecase
 set showcmd
 set showmode
 let g:netrw_banner = 0 " Hide netrw top bar, toggle with 'I'
+let g:netrw_altfile = 1
 " set laststatus=2 " show status line
 
 call plug#begin()
