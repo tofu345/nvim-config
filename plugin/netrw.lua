@@ -6,16 +6,15 @@ vim.cmd([[
 ]])
 
 -- https://www.reddit.com/r/neovim/comments/14e59ub/i_wrote_a_function_that_moves_the_cursor_to_the/
-local ex_to_current_file = function()
+local ex_cursor_on_filename = function()
 	-- add current position to jumplist
 	vim.fn.search(".", "s")
 
 	local cur_file = vim.fn.expand("%:t")
 
-	-- open netrw and set curpos to cur_file
 	vim.cmd(":Ex")
-	local linenum = vim.fn.search("^" .. cur_file .. "$", 'n')
-	vim.cmd(":keepjumps :" .. tostring(linenum))
+	-- move cursor to filename
+	vim.fn.search("^" .. cur_file .. "\\*\\+$") -- executable files have '*' at the end
 end
 
-vim.keymap.set("n", "<leader>pv", ex_to_current_file, { desc = "netrw with cursor on current file" })
+vim.keymap.set("n", "<leader>pv", ex_cursor_on_filename, { desc = "netrw with cursor on current file" })
