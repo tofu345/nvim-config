@@ -14,7 +14,7 @@ local ex_cursor_on_filename = function()
 
 	vim.cmd(":Ex")
 	-- move cursor to filename
-	vim.fn.search("^" .. cur_file .. "\\*\\+$") -- executable files have '*' at the end
+	vim.fn.search("^" .. cur_file .. "\\**$") -- executable files have '*' at the end
 end
 
 vim.keymap.set("n", "<leader>pv", ex_cursor_on_filename, { desc = "netrw with cursor on current file" })
