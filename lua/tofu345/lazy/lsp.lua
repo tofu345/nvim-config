@@ -36,10 +36,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			vim.diagnostic.jump({ count = 1, float = true })
 		end, { buffer = e.buf, desc = "Lsp Diagnostic Go To Prev" })
 
-		-- Use <C-h> as backspace
-		-- vim.keymap.set("i", "<C-h>", function()
-		-- 	vim.lsp.buf.signature_help({ border = "rounded" })
-		-- end, { buffer = e.buf, desc = "Lsp Signature Help" })
+		vim.keymap.set("i", "<C-s>", function()
+			vim.lsp.buf.signature_help({ border = "rounded" })
+		end, { buffer = e.buf, desc = "Lsp Signature Help" })
 	end,
 })
 

@@ -9,11 +9,8 @@ keymap.set("n", "<C-S-@>", "<C-^>") -- :|
 
 keymap.set("c", "<M-b>", "<S-Left>", { desc = "One WORD Left" })
 keymap.set("c", "<M-e>", "<S-Right>", { desc = "One WORD Right" })
-keymap.set("c", "<C-p>", "<Up>")
-keymap.set("c", "<C-n>", "<Down>")
 
 keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tms<CR>", { desc = "Open tmux-sessionizer" })
-keymap.set("n", "<A-f>", "<cmd>Neoformat<CR>")
 
 keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move Highlighted Text Upwards" })
 keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move Highlighted Text Downwards" })

@@ -14,7 +14,12 @@ return {
 		local builtin = require("telescope.builtin")
 		local themes = require("telescope.themes")
 
-		vim.keymap.set("n", "<leader>l", builtin.buffers, { desc = "List buffers" })
+		vim.keymap.set("n", "<leader>l", function()
+			builtin.buffers({
+				show_all_buffers = false,
+				sort_lastused = true,
+			})
+		end, { desc = "List buffers" })
 
 		vim.keymap.set("n", "<leader>pf", function()
 			builtin.find_files({ no_ignore = false, hidden = false })
