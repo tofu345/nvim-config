@@ -14,7 +14,7 @@ return {
 
 		require("dapui").setup()
 		require("dap-go").setup()
-		require("nvim-dap-virtual-text").setup()
+		require("nvim-dap-virtual-text").setup({})
 
 		dap.set_log_level("TRACE")
 		dap.adapters.haskell = {

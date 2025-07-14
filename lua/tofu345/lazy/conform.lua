@@ -13,6 +13,7 @@ return {
 				go = { "gofmt" },
 				typescript = { "prettier" },
 				javascript = { "prettier" },
+				markdown = { "prettier" },
 				["*"] = { "trim_whitespace" },
 			},
 		})

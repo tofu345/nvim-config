@@ -5,7 +5,7 @@ return {
 	},
 	config = function()
 		vim.cmd([[
-            let g:dirvish_mode='sort ,^.*[\/],'
+            let g:dirvish_mode='sort ,^.*[\/],' " netrw like
             let g:dirvish_relative_paths = 0
         ]])
 

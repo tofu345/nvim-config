@@ -16,7 +16,7 @@ return {
 
 		vim.keymap.set("n", "<leader>l", function()
 			builtin.buffers({
-				show_all_buffers = false,
+				show_all_buffers = true,
 				sort_lastused = true,
 			})
 		end, { desc = "List buffers" })

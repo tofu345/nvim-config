@@ -2,7 +2,7 @@ return {
 	"mbbill/undotree",
 	config = function()
 		vim.keymap.set("n", "<leader>u", "<Cmd>UndotreeToggle<CR>")
-        vim.cmd([[
+		vim.cmd([[
             if has("persistent_undo")
                 let target_path = expand('~/.undodir')
 
