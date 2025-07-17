@@ -12,9 +12,6 @@ keymap.set("c", "<M-e>", "<S-Right>", { desc = "One WORD Right" })
 
 keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tms<CR>", { desc = "Open tmux-sessionizer" })
 
-keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move Highlighted Text Upwards" })
-keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move Highlighted Text Downwards" })
-
 keymap.set("n", "s", '"_s')
 keymap.set("x", "<leader>p", [["_dP]], { desc = "Paste without overwriting unnamed Register" })
 keymap.set({ "n", "v" }, "<leader>y", [["+y]], { desc = "Copy into System Clipboard" }) -- next greatest remap ever : asbjornHaland
