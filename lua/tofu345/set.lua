@@ -11,7 +11,7 @@ set.autochdir = false
 set.nu = true
 set.relativenumber = true
 
-set.scrolloff = 8
+set.scrolloff = 4
 set.ignorecase = true
 set.smartcase = true
 set.hlsearch = false

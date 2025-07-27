@@ -1,29 +1,17 @@
 vim.api.nvim_create_autocmd("LspAttach", {
 	callback = function()
+		local set = vim.keymap.set
 		local builtin = require("telescope.builtin")
 		local themes = require("telescope.themes")
-		local set = vim.keymap.set
 
-		set("n", "K", function()
-			vim.lsp.buf.hover({ border = "rounded" })
-		end, { buffer = true, desc = "Lsp Hover" })
-
-		set("n", "<leader>vd", vim.diagnostic.open_float, { buffer = true, desc = "Lsp Diagnostic Float" })
-		set("n", "<leader>r", vim.lsp.buf.rename, { buffer = true, desc = "Lsp Rename" })
-		set("n", "gd", vim.lsp.buf.definition, { buffer = true, desc = "Lsp Go to Definition" })
+		-- see :help lsp-defaults
 
 		set("n", "grr", function()
 			builtin.lsp_references(themes.get_ivy({ height = 0.5 }))
 		end, { buffer = true, desc = "Lsp References" })
 
-		set("n", "<leader>ca", vim.lsp.buf.code_action, { buffer = true, desc = "Lsp Code Action" })
-
-		set("n", "[d", function()
-			vim.diagnostic.jump({ count = -1, float = true })
-		end, { buffer = true, desc = "Lsp Diagnostic Go To Next" })
-		set("n", "]d", function()
-			vim.diagnostic.jump({ count = 1, float = true })
-		end, { buffer = true, desc = "Lsp Diagnostic Go To Prev" })
+		set("n", "grd", vim.diagnostic.open_float, { buffer = true, desc = "Lsp Diagnostic Float" })
+		set("n", "gd", vim.lsp.buf.definition, { buffer = true, desc = "Lsp Go to Definition" })
 
 		set("i", "<C-s>", function()
 			vim.lsp.buf.signature_help({ border = "rounded" })
@@ -139,8 +127,6 @@ return {
 				style = "minimal",
 				border = "rounded",
 				source = true,
-				header = "",
-				prefix = "",
 			},
 		})
 	end,

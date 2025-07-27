@@ -1,4 +1,4 @@
-nnoremap <Space>pv <Cmd>Ex<CR>
+nnoremap <Space>pv <Cmd>Dirvish<CR>
 nnoremap <Space>pf <Cmd>Files<CR>
 nnoremap <Space>ps <Cmd>Rg<CR>
 nnoremap <C-p> <Cmd>GFiles<CR>
@@ -7,7 +7,6 @@ nnoremap <Space>l <Cmd>Buffers<CR>
 nnoremap <Space>u <Cmd>UndotreeToggle<CR>
 
 " remove all trailing whitespace 
-" https://vi.stackexchange.com/questions/454/whats-the-simplest-way-to-strip-trailing-whitespace-from-all-lines-in-a-file
 execute "set <M-f>=\ef"
 nnoremap <silent> <M-f> :%s/\s\+$//e<CR>
 
@@ -29,9 +28,8 @@ set ignorecase
 set showcmd
 set showmode
 
-let g:netrw_banner = 0
-let g:netrw_altfile = 1
-let g:netrw_fastbrowse = 0
+let g:dirvish_mode='sort ,^.*[\/],' " netrw like
+let g:dirvish_relative_paths = 0
 
 call plug#begin()
 
@@ -41,6 +39,9 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
 Plug 'mbbill/undotree'
+
+Plug 'justinmk/vim-dirvish'
+Plug 'tpope/vim-eunuch'
 
 call plug#end()
 
