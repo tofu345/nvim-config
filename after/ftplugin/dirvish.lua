@@ -1,18 +1,19 @@
 local function createDir()
-    local input = vim.fn.input("Mkdir -p: " )
-    if not input then
-        return
-    end
+	local input = vim.fn.input("Mkdir -p: ")
+	if not input then
+		return
+	end
 	local filename = vim.fn.expand("%") .. input
-	local handle = io.popen("mkdir -p \"" .. filename .. '\"')
+	local handle = io.popen('mkdir -p "' .. filename .. '"')
 	if handle ~= nil then
 		local result = handle:read("*a")
 		handle:close()
 		if result ~= "" then
 			print(result)
+			return
 		end
-        vim.cmd("edit")
-        vim.fn.search(input .. "/$")
+		vim.cmd("edit")
+		vim.fn.search(input .. "/$")
 	end
 end
 

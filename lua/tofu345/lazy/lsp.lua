@@ -10,9 +10,13 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			builtin.lsp_references(themes.get_ivy({ height = 0.5 }))
 		end, { buffer = true, desc = "Lsp References" })
 
-		set("n", "grd", vim.diagnostic.open_float, { buffer = true, desc = "Lsp Diagnostic Float" })
+		set("n", "<leader>vd", vim.diagnostic.open_float, { buffer = true, desc = "Lsp View Diagnostic Float" })
 		set("n", "gd", vim.lsp.buf.definition, { buffer = true, desc = "Lsp Go to Definition" })
 
+		-- I like my rounded borders
+		set("n", "K", function()
+			vim.lsp.buf.hover({ border = "rounded" })
+		end, { buffer = true, desc = "Lsp Hover" })
 		set("i", "<C-s>", function()
 			vim.lsp.buf.signature_help({ border = "rounded" })
 		end, { buffer = true, desc = "Lsp Signature Help" })
@@ -31,16 +35,12 @@ return {
 		"hrsh7th/cmp-path",
 		"hrsh7th/cmp-cmdline",
 		"hrsh7th/nvim-cmp",
-		"folke/neodev.nvim",
 		"L3MON4D3/LuaSnip",
 		"saadparwaiz1/cmp_luasnip",
 		"j-hui/fidget.nvim",
 	},
 	config = function()
 		vim.lsp.set_log_level("off")
-
-		-- IMPORTANT: make sure to setup neodev BEFORE lspconfig
-		require("neodev").setup()
 
 		local cmp = require("cmp")
 		local cmp_lsp = require("cmp_nvim_lsp")
@@ -51,34 +51,11 @@ return {
 			cmp_lsp.default_capabilities()
 		)
 
-		require("fidget").setup({
-			progress = {
-				suppress_on_insert = true, -- Suppress new messages while in insert mode
-				ignore_done_already = true, -- Ignore new tasks that are already complete
-				-- ignore = {},                  -- List of LSP servers to ignore
-				display = {
-					render_limit = 5, -- How many LSP messages to show at once
-				},
-			},
-		})
-
-		-- would not run in require("mason-lspconfig").setup()
-		require("lspconfig").lua_ls.setup({
-			capabilities = capabilities,
-			settings = {
-				Lua = {
-					diagnostics = {
-						globals = { "vim" },
-					},
-				},
-			},
-		})
-
+		-- require("fidget").setup({})
 		require("mason").setup()
 		require("mason-lspconfig").setup({
-			automatic_installation = false,
-			ensure_installed = {},
 			automatic_enable = true,
+			ensure_installed = {},
 			handlers = {
 				function(server_name) -- default handler (optional)
 					require("lspconfig")[server_name].setup({
@@ -86,7 +63,7 @@ return {
 					})
 				end,
 
-				["hls"] = function()
+				hls = function()
 					require("lspconfig")["hls"].setup({
 						filetypes = { "haskell", "lhaskell", "cabal" },
 					})
@@ -115,6 +92,10 @@ return {
 			sources = cmp.config.sources({
 				{ name = "nvim_lsp" },
 				{ name = "luasnip" }, -- For luasnip users.
+				{
+					name = "lazydev",
+					group_index = 0, -- set group index to 0 to skip loading LuaLS completions
+				},
 			}, {
 				{ name = "buffer" },
 			}),
