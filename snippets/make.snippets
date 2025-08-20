@@ -1,14 +1,15 @@
 # base
-snippet base
-	CC=gcc
-	CFLAGS=-g -Wall -Wextra -Werror -o ${OUTFILE}
-	OUTFILE=burglar_alarm
+snippet g++
+	FILES = ${0}
+	OUTFILE = main
+	CFLAGS = -g -Wall -Wextra -Werror -o \${OUTFILE}
 
-	FILES=${0}
-	
-	all: main
-		@ ./${OUTFILE}
-	
 	main: \${FILES} Makefile
-		@ \${CC} \${CFLAGS} \${FILES}
+		@ g++ \${CFLAGS} \${FILES}
 
+snippet gcc
+	CFLAGS = -g -Wall -Wextra -Werror
+
+	main:
+		@ gcc \${CFLAGS} -o a.out \\
+			${0}

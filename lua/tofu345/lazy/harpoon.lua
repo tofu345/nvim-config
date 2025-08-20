@@ -22,7 +22,7 @@ return {
 
 		require("harpoon").setup({
 			menu = {
-				width = 60,
+                width = math.min(60, vim.api.nvim_win_get_width(0) - 8),
 			},
 			tabline = false,
 		})

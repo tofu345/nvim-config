@@ -5,10 +5,10 @@ return {
 		local configs = require("nvim-treesitter.configs")
 
 		configs.setup({
-            auto_install = true,
-            sync_install = false,
-            ignore_install = {},
-			ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "elixir", "heex", "javascript", "html" },
+			auto_install = true,
+			sync_install = false,
+			ignore_install = {},
+			ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "ocaml", "heex", "javascript", "html" },
 			highlight = {
 				enable = true,
 				disable = function(lang, buf)
@@ -23,7 +23,7 @@ return {
 					-- end
 				end,
 			},
-			indent = { enable = true },
+			indent = { enable = false }, -- so it was you all along...
 		})
 
 		vim.cmd(":silent TSUpdate")

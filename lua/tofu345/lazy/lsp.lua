@@ -10,8 +10,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			builtin.lsp_references(themes.get_ivy({ height = 0.5 }))
 		end, { buffer = true, desc = "Lsp References" })
 
+		set("n", "<leader>ca", vim.lsp.buf.code_action, { buffer = true, desc = "Lsp Code Action" })
 		set("n", "<leader>vd", vim.diagnostic.open_float, { buffer = true, desc = "Lsp View Diagnostic Float" })
-		set("n", "gd", vim.lsp.buf.definition, { buffer = true, desc = "Lsp Go to Definition" })
+		set("n", "<leader>r", vim.lsp.buf.rename, { buffer = true, desc = "Lsp Rename" })
+		set("n", "gd", vim.lsp.buf.definition, { buffer = true, desc = "Go to Definition" })
 
 		-- I like my rounded borders
 		set("n", "K", function()
@@ -51,7 +53,7 @@ return {
 			cmp_lsp.default_capabilities()
 		)
 
-		-- require("fidget").setup({})
+		require("fidget").setup({})
 		require("mason").setup()
 		require("mason-lspconfig").setup({
 			automatic_enable = true,
@@ -105,7 +107,7 @@ return {
 			virtual_text = false,
 			float = {
 				focusable = false,
-				style = "minimal",
+				-- style = "minimal",
 				border = "rounded",
 				source = true,
 			},
