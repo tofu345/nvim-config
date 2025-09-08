@@ -58,7 +58,7 @@ vim.api.nvim_create_autocmd("VimResized", {
 	end,
 })
 
-local toggle_terminal = function()
+local toggle_floating_terminal = function()
 	if not vim.api.nvim_win_is_valid(state.win) then
 		state = create_floating_window({ buf = state.buf })
 		if vim.bo[state.buf].buftype ~= "terminal" then
@@ -69,4 +69,7 @@ local toggle_terminal = function()
 	end
 end
 
-vim.keymap.set("n", "<leader>tt", toggle_terminal, { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>tf", toggle_floating_terminal, { noremap = true, silent = true })
+
+vim.keymap.set("n", "<leader>tt", "<CMD>tab term<CR>i")
+vim.keymap.set("n", "<leader>tn", "<CMD>new +term<CR>i")

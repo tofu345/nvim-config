@@ -34,6 +34,7 @@ return {
 				stopOnEntry = false,
 			},
 		}
+		dap.configurations.c = dap.configurations.cpp
 
 		vim.keymap.set("n", "<space>b", dap.toggle_breakpoint, { desc = "Dap - Toggle Breakpoint" })
 		vim.keymap.set("n", "<space>gb", dap.run_to_cursor, { desc = "Dap - Run to Cursor" })
@@ -48,6 +49,11 @@ return {
 		vim.keymap.set("n", "<F3>", dap.step_over)
 		vim.keymap.set("n", "<F4>", dap.step_out)
 		vim.keymap.set("n", "<F5>", dap.step_back)
+
+		vim.keymap.set("n", "<F9>", ui.open, { desc = "Dapui Open" })
+		vim.keymap.set("n", "<F10>", ui.close, { desc = "Dapui Close" })
+
+		vim.keymap.set("n", "<F11>", dap.terminate)
 		vim.keymap.set("n", "<F12>", dap.restart)
 
 		dap.listeners.before.attach.dapui_config = function()
@@ -56,11 +62,11 @@ return {
 		dap.listeners.before.launch.dapui_config = function()
 			ui.open()
 		end
-		dap.listeners.before.event_terminated.dapui_config = function()
-			ui.close()
-		end
-		dap.listeners.before.event_exited.dapui_config = function()
-			ui.close()
-		end
+		-- dap.listeners.before.event_terminated.dapui_config = function()
+		-- 	ui.close()
+		-- end
+		-- dap.listeners.before.event_exited.dapui_config = function()
+		-- 	ui.close()
+		-- end
 	end,
 }

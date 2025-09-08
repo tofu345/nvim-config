@@ -19,7 +19,7 @@ set tabstop=4
 set softtabstop=4
 set expandtab
 
-set scrolloff=8
+set scrolloff=4
 set number
 set rnu
 set hidden

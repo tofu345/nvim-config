@@ -1,5 +1,7 @@
 local set = vim.opt
 
+set.cc = "79";
+
 vim.g.foldmethod = "manual"
 vim.g.have_nerd_font = true
 

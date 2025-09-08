@@ -7,5 +7,3 @@ vim.opt.linebreak = true
 
 vim.keymap.set("n", "<A-p>", "<Cmd>PasteImg<CR>", { buffer = true })
 vim.keymap.set("n", "<leader>oo", "yib:silent !eog \"<CR>")
-
-vim.fn.setreg("t", "####")
