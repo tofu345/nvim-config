@@ -20,10 +20,10 @@ set.hlsearch = false
 set.incsearch = true
 set.wrap = false
 
-set.expandtab = true
-set.tabstop = 4
-set.softtabstop = 0
-set.shiftwidth = 0
+set.expandtab = false
+set.tabstop = 8
+set.softtabstop = 4
+set.shiftwidth = 4
 
 set.swapfile = false
 set.backup = false

@@ -12,9 +12,5 @@ return {
 			updateevents = "TextChanged,TextChangedi",
 			enable_autosnippets = true,
 		})
-
-		vim.keymap.set({ "i" }, "<C-K>", function()
-			ls.expand({})
-		end, { silent = true, desc = "LuaSnap Expand" })
 	end,
 }

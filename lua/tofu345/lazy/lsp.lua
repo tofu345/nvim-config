@@ -6,6 +6,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 		-- see :help lsp-defaults
 
+		vim.keymap.set({ "i" }, "<C-K>", function()
+			require("luasnip").expand({})
+		end, { silent = true, desc = "LuaSnap Expand" })
+
 		set("n", "grr", function()
 			builtin.lsp_references(themes.get_ivy({ height = 0.5 }))
 		end, { buffer = true, desc = "Lsp References" })

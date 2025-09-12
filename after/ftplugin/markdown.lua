@@ -1,6 +1,6 @@
 -- NOTE: vim.bo applies to current buffer only
 
-vim.bo.tabstop = 2
+vim.bo.shiftwidth = 2
 vim.bo.tw = 79 -- auto break
 
 vim.opt.linebreak = true
