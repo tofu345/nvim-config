@@ -3,6 +3,8 @@ return {
 	config = function()
 		vim.keymap.set("n", "<leader>u", "<Cmd>UndotreeToggle<CR>")
 		vim.cmd([[
+            let g:undotree_WindowLayout=2
+
             if has("persistent_undo")
                 let target_path = expand('~/.undodir')
 

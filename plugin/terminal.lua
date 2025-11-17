@@ -1,4 +1,4 @@
--- all hail teej, the goat 
+-- all hail teej, the goat
 -- https://github.com/tjdevries/advent-of-nvim/blob/master/nvim/plugin/floaterminal.lua
 -- https://www.youtube.com/watch?v=AXsnL16qSyk, https://www.youtube.com/watch?v=8vmAa3dRpp0
 
@@ -14,7 +14,7 @@ local function floating_config(opts)
 	local width = opts.width or math.floor(vim.o.columns * 0.8)
 	local height = opts.height or math.floor(vim.o.lines * 0.8)
 	local col = math.floor((vim.o.columns - width) / 2)
-	local row = math.floor((vim.o.lines - height) / 2)
+	local row = math.floor((vim.o.lines - height) / 3)
 
 	return {
 		relative = "editor",
@@ -71,5 +71,5 @@ end
 
 vim.keymap.set("n", "<leader>tf", toggle_floating_terminal, { noremap = true, silent = true })
 
-vim.keymap.set("n", "<leader>tt", "<CMD>tab term<CR>i")
-vim.keymap.set("n", "<leader>tn", "<CMD>new +term<CR>i")
+vim.keymap.set("n", "<leader>tt", "<CMD>tab term<CR>i", { desc = "Terminal in new Tab" })
+vim.keymap.set("n", "<leader>tn", "<CMD>new +term<CR>i", { desc = "Terminal in New window" })

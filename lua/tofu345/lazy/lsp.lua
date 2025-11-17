@@ -14,10 +14,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			builtin.lsp_references(themes.get_ivy({ height = 0.5 }))
 		end, { buffer = true, desc = "Lsp References" })
 
-		set("n", "<leader>ca", vim.lsp.buf.code_action, { buffer = true, desc = "Lsp Code Action" })
-		set("n", "<leader>vd", vim.diagnostic.open_float, { buffer = true, desc = "Lsp View Diagnostic Float" })
-		set("n", "<leader>r", vim.lsp.buf.rename, { buffer = true, desc = "Lsp Rename" })
-		set("n", "gd", vim.lsp.buf.definition, { buffer = true, desc = "Go to Definition" })
+		set("n", "<leader>ca", vim.lsp.buf.code_action, { buffer = true, desc = "Lsp [C]ode [A]ction" })
+		set("n", "<leader>vd", vim.diagnostic.open_float, { buffer = true, desc = "Lsp [V]iew [D]iagnostic Float" })
+		set("n", "<leader>r", vim.lsp.buf.rename, { buffer = true, desc = "Lsp [R]ename" })
+		set("n", "gd", vim.lsp.buf.definition, { buffer = true, desc = "[G]o to [D]efinition" })
 
 		-- I like my rounded borders
 		set("n", "K", function()

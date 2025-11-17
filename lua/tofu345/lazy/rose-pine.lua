@@ -10,7 +10,7 @@ return {
 	config = function()
 		require("rose-pine").setup({
 			variant = "main",
-			dim_inactive_windows = true,
+			dim_inactive_windows = false,
 			extend_background_behind_borders = true,
 			enable = {
 				migrations = true,
@@ -24,6 +24,9 @@ return {
 			},
 			highlight_groups = {
 				Comment = { italic = false },
+				CursorLine = { bg = "base" },
+                TreesitterContext = { bg = "base" },
+                TreesitterContextLineNumber = { bg = "base" },
 			},
 			groups = {
 				border = "muted",

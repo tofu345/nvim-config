@@ -12,7 +12,7 @@ return {
 				lua = { "stylua" },
 				go = { "gofmt" },
 				typescript = { "prettier" },
-				javascript = { "prettier" },
+				-- javascript = { "prettier" },
 				markdown = { "prettier" },
 				["*"] = { "trim_whitespace" },
 			},

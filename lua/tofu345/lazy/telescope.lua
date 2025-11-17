@@ -6,7 +6,7 @@ return {
 		require("telescope").setup({
 			defaults = {
 				layout_config = {
-                    vertical = { width = 0.9, preview_height = 0},
+                    -- vertical = { width = 0.9, preview_height = 0 },
 					horizontal = { width = 0.9, preview_width = 0.5 },
 				},
 			},
@@ -17,7 +17,7 @@ return {
 
 		vim.keymap.set("n", "<leader>l", function()
 			builtin.buffers({
-				layout_strategy = "vertical",
+				layout_strategy = "flex",
 				show_all_buffers = true,
 				sort_lastused = false,
 				ignore_current_buffer = false,

@@ -1,15 +1,8 @@
 # base
-snippet g++
-	FILES = ${0}
-	OUTFILE = main
-	CFLAGS = -g -Wall -Wextra -Werror -o \${OUTFILE}
-
-	main: \${FILES} Makefile
-		@ g++ \${CFLAGS} \${FILES}
-
-snippet gcc
-	CFLAGS = -g -Wall -Wextra -Werror
+snippet base
+    CC = gcc
+	CFLAGS = -g -Wall -Wextra -Werror -Weffc++ -Wconversion -Wsign-conversion
 
 	main:
-		@ gcc \${CFLAGS} -o a.out \\
+		@ \${CC} \${CFLAGS} -o a.out \\
 			${0}
