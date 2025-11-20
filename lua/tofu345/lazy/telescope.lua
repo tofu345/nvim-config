@@ -6,7 +6,7 @@ return {
 		require("telescope").setup({
 			defaults = {
 				layout_config = {
-                    -- vertical = { width = 0.9, preview_height = 0 },
+					-- vertical = { width = 0.9, preview_height = 0 },
 					horizontal = { width = 0.9, preview_width = 0.5 },
 				},
 			},
@@ -38,8 +38,8 @@ return {
 		end, { desc = "Live Grep" })
 
 		vim.keymap.set("n", "<leader>sh", builtin.help_tags, { desc = "Help" })
-		vim.keymap.set("n", "<leader>sk", builtin.keymaps, { desc = "[S]earch [K]eymaps" })
-		-- vim.keymap.set("n", "<leader>ss", builtin.builtin, { desc = "[S]earch [S]elect Telescope" })
+		vim.keymap.set("n", "<leader>sk", builtin.keymaps, { desc = "Search Keymaps" })
+		-- vim.keymap.set("n", "<leader>ss", builtin.builtin, { desc = "Search Select Telescope" })
 	end,
 	lazy = false,
 }

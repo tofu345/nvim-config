@@ -1,3 +1,3 @@
 # nvim-config
 
-Forked from [ThePrimeagen's Nvim config](https://github.com/ThePrimeagen/init.lua)
+Inspired by [ThePrimeagen's config](https://github.com/ThePrimeagen/init.lua)
