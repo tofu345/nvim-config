@@ -1,5 +1,8 @@
 local set = vim.opt
 
+-- 1000 number of previously edited files for which the marks are remembered.
+set.shada = "!,'1000,<50,s10,h"
+
 set.cc = "79"
 
 vim.g.foldmethod = "manual"

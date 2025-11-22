@@ -19,8 +19,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		set("n", "<leader>r", vim.lsp.buf.rename, { buffer = true, desc = "Lsp Rename" })
 		set("n", "gd", vim.lsp.buf.definition, { buffer = true, desc = "Go to Definition" })
 
-		set("n", "gli", "<CMD>LspInfo<CR>", { buffer = true, desc = ":LspInfo" })
-		set("n", "gls", "<CMD>LspStop<CR>", { buffer = true, desc = ":LspStop" })
+		set("n", "gli", "<CMD>LspInfo<CR>", { buffer = true })
 
 		-- I like my rounded borders
 		set("n", "K", function()

@@ -1,4 +1,4 @@
-nnoremap <Space>pv <Cmd>Dirvish<CR>
+nnoremap - <Cmd>Dirvish<CR>
 nnoremap <Space>pf <Cmd>Files<CR>
 nnoremap <Space>ps <Cmd>Rg<CR>
 nnoremap <C-p> <Cmd>GFiles<CR>

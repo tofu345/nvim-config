@@ -14,12 +14,13 @@ return {
 				typescript = { "prettier" },
 				-- javascript = { "prettier" },
 				markdown = { "prettier" },
+				ocaml = { "ocamlformat" },
 				["*"] = { "trim_whitespace" },
 			},
 		})
 
 		vim.keymap.set("n", "<A-f>", function()
 			require("conform").format({ bufnr = 0 })
-		end)
+		end, { desc = "Conform Format" })
 	end,
 }

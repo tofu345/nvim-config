@@ -7,15 +7,7 @@ return {
 		local extensions = require("harpoon.extensions")
 
 		-- REQUIRED
-		harpoon:setup({
-			settings = {
-				save_on_toggle = true,
-				sync_on_ui_close = false,
-				key = function()
-					return vim.fn.getcwd(0, 0)
-				end,
-			},
-		})
+		harpoon:setup({})
 
 		harpoon:extend(extensions.builtins.highlight_current_file())
 
