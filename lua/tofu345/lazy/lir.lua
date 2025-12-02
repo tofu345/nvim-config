@@ -8,18 +8,23 @@ return {
 		local lir = require("lir")
 		local actions = require("lir.actions")
 
+		-- require("nvim-web-devicons").setup({
+		-- 	default = true,
+		-- })
+
 		lir.setup({
-			hide_cursor = false,
+			hide_cursor = true,
 			show_hidden_files = true,
 			ignore = {},
 			devicons = {
-				enable = true,
+				enable = false,
 				highlight_dirname = false,
 			},
 			mappings = {
-				["q"] = actions.quit,
+				-- ["q"] = actions.quit,
 
 				["<C-m>"] = actions.edit,
+				["-"] = actions.up,
 				["l"] = actions.edit,
 				["h"] = actions.up,
 
@@ -29,7 +34,7 @@ return {
 				["cd"] = actions.cd,
 				["_"] = function()
 					-- go to :pwd
-					vim.cmd("e " .. vim.fn.getcwd())
+					vim.cmd("edit " .. vim.fn.getcwd())
 				end,
 
 				["Y"] = actions.yank_path,
@@ -37,7 +42,7 @@ return {
 				["."] = function()
 					-- from vim-dirvish, inserts ":! {path}" into the command-line.
 					local ctx = lir.get_context()
-					local keys = ":! %/'" .. ctx:current().value .. "'<Home><C-Right>"
+					local keys = ":! '%/" .. ctx:current().value .. "'<Home><C-Right>"
 					local escaped = vim.api.nvim_replace_termcodes(keys, true, false, true)
 					vim.api.nvim_feedkeys(escaped, "n", false)
 				end,
@@ -53,11 +58,6 @@ return {
 				return {}
 			end,
 		})
-
-		require("nvim-web-devicons").setup({
-			default = true,
-		})
-
 
 		vim.keymap.set("n", "-", [[<Cmd>execute 'e ' .. expand('%:p:h')<CR>]], { noremap = true })
 	end,

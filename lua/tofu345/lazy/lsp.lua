@@ -20,6 +20,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		set("n", "gd", vim.lsp.buf.definition, { buffer = true, desc = "Go to Definition" })
 
 		set("n", "gli", "<CMD>LspInfo<CR>", { buffer = true })
+		set("n", "gls", ":LspStop ", { buffer = true })
 
 		-- I like my rounded borders
 		set("n", "K", function()
@@ -43,9 +44,14 @@ return {
 		"hrsh7th/cmp-path",
 		"hrsh7th/cmp-cmdline",
 		"hrsh7th/nvim-cmp",
-		"L3MON4D3/LuaSnip",
-		"saadparwaiz1/cmp_luasnip",
 		"j-hui/fidget.nvim",
+		{
+			"L3MON4D3/LuaSnip",
+			-- follow latest release.
+			version = "v2.*",
+			build = "make install_jsregexp",
+		},
+		"saadparwaiz1/cmp_luasnip",
 	},
 	config = function()
 		vim.lsp.set_log_level("off")
@@ -79,23 +85,54 @@ return {
 			},
 		})
 
-		local cmp_select = { behavior = cmp.SelectBehavior.Select }
+		require("luasnip.loaders.from_snipmate").lazy_load({ paths = { "~/.config/nvim/snippets" } })
+
+		local luasnip = require("luasnip")
+		luasnip.config.set_config({
+			history = true,
+			updateevents = "TextChanged,TextChangedi",
+			enable_autosnippets = true,
+		})
 
 		cmp.setup({
 			snippet = {
 				expand = function(args)
-					require("luasnip").lsp_expand(args.body) -- For `luasnip` users.
+					luasnip.lsp_expand(args.body) -- For `luasnip` users.
 				end,
 			},
 			window = {
 				completion = cmp.config.window.bordered(),
 				documentation = cmp.config.window.bordered(),
 			},
+			-- https://github.com/hrsh7th/nvim-cmp/wiki/Example-mappings#luasnip
 			mapping = cmp.mapping.preset.insert({
-				["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
-				["<C-n>"] = cmp.mapping.select_next_item(cmp_select),
+				["<C-p>"] = cmp.mapping(function()
+					if cmp.visible() then
+						cmp.select_prev_item()
+					elseif luasnip.locally_jumpable(-1) then
+						luasnip.jump(-1)
+					end
+				end, { "i", "s" }),
+
+				["<C-n>"] = cmp.mapping(function()
+					if cmp.visible() then
+						cmp.select_next_item()
+					elseif luasnip.locally_jumpable(1) then
+						luasnip.jump(1)
+					end
+				end, { "i", "s" }),
+
+				["<C-y>"] = cmp.mapping(function()
+					if cmp.visible() then
+						if luasnip.expandable() then
+							luasnip.expand()
+						else
+							cmp.confirm({ select = true })
+						end
+					end
+				end),
+
 				["<C-Space>"] = cmp.mapping.complete(),
-				["<C-y>"] = cmp.mapping.confirm({ select = true }),
 			}),
 			sources = cmp.config.sources({
 				{ name = "nvim_lsp" },
@@ -113,7 +150,6 @@ return {
 			virtual_lines = false,
 			float = {
 				focusable = false,
-				-- style = "minimal",
 				border = "rounded",
 				source = true,
 			},
