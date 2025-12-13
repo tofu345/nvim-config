@@ -65,7 +65,13 @@ return {
 			cmp_lsp.default_capabilities()
 		)
 
-		require("fidget").setup({})
+		require("fidget").setup({
+			notification = {
+				window = {
+					winblend = 0,
+				},
+			},
+		})
 		require("mason").setup()
 		require("mason-lspconfig").setup({
 			automatic_enable = true,
