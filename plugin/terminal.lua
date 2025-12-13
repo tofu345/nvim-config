@@ -69,7 +69,4 @@ local toggle_floating_terminal = function()
 	end
 end
 
-vim.keymap.set("n", "<leader>tf", toggle_floating_terminal, { noremap = true, silent = true })
-
-vim.keymap.set("n", "<leader>tt", "<CMD>tab term<CR>i", { desc = "Terminal in new Tab" })
-vim.keymap.set("n", "<leader>tn", "<CMD>new +term<CR>i", { desc = "Terminal in New window" })
+vim.keymap.set("n", "<leader>tt", toggle_floating_terminal, { noremap = true, silent = true })

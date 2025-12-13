@@ -1,4 +1,5 @@
 set nocompatible
+set noswapfile
 
 set nowrap
 set incsearch
@@ -23,6 +24,7 @@ nnoremap <Space>pf <Cmd>Files<CR>
 nnoremap <Space>ps <Cmd>Rg<CR>
 nnoremap <C-p> <Cmd>GFiles<CR>
 nnoremap <Space>l <Cmd>Buffers<CR>
+
 tnoremap <Esc> <C-\><C-n>
 
 " remove all trailing whitespace 

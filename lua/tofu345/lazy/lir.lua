@@ -8,16 +8,12 @@ return {
 		local lir = require("lir")
 		local actions = require("lir.actions")
 
-		-- require("nvim-web-devicons").setup({
-		-- 	default = true,
-		-- })
-
 		lir.setup({
-			hide_cursor = true,
+			hide_cursor = false,
 			show_hidden_files = true,
 			ignore = {},
 			devicons = {
-				enable = false,
+				enable = true,
 				highlight_dirname = false,
 			},
 			mappings = {
@@ -57,6 +53,10 @@ return {
 			get_filters = function()
 				return {}
 			end,
+		})
+
+		require("nvim-web-devicons").setup({
+			default = true,
 		})
 
 		vim.keymap.set("n", "-", [[<Cmd>execute 'e ' .. expand('%:p:h')<CR>]], { noremap = true })
