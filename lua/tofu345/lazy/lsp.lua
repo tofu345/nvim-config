@@ -20,7 +20,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		set("n", "gd", vim.lsp.buf.definition, { buffer = true, desc = "Go to Definition" })
 
 		set("n", "gli", "<CMD>LspInfo<CR>", { buffer = true })
-		set("n", "gls", ":LspStop ", { buffer = true })
+		set("n", "gls", ":LspStop", { buffer = true })
 
 		-- I like my rounded borders
 		set("n", "K", function()
@@ -68,6 +68,7 @@ return {
 		require("fidget").setup({
 			notification = {
 				window = {
+					avoid = { "NvimTree" },
 					winblend = 0,
 				},
 			},

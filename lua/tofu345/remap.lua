@@ -3,6 +3,8 @@ local keymap = vim.keymap
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+keymap.set("n", "<leader>pv", "<cmd>Ex<cr>")
+
 keymap.set("t", "<C-[>", "<C-\\><C-n>")
 
 keymap.set("n", "<C-S-@>", "<C-^>") -- Real programmers dvorak L :|
