@@ -66,7 +66,13 @@ return {
 	config = function()
 		require("nvim-web-devicons").setup()
 		require("nvim-tree").setup({
+			on_attach = my_on_attach,
+			disable_netrw = false,
+			hijack_netrw = true,
 			view = {},
+			filters = {
+				enable = false,
+			},
 			renderer = {
 				full_name = true,
 				group_empty = true,
@@ -83,7 +89,6 @@ return {
 					},
 				},
 			},
-			on_attach = my_on_attach,
 			update_focused_file = {
 				enable = true,
 			},
