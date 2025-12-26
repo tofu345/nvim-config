@@ -64,12 +64,19 @@ return {
 	},
 	lazy = false,
 	config = function()
-		require("nvim-web-devicons").setup()
+		require("nvim-web-devicons").setup({
+			default = true,
+			variant = "dark",
+			color_icons = true,
+		})
+
 		require("nvim-tree").setup({
 			on_attach = my_on_attach,
 			disable_netrw = false,
 			hijack_netrw = true,
-			view = {},
+			view = {
+				width = 40,
+			},
 			filters = {
 				enable = false,
 			},
@@ -77,6 +84,10 @@ return {
 				full_name = true,
 				group_empty = true,
 				icons = {
+					web_devicons = {
+						file = { color = true },
+						folder = { color = true },
+					},
 					show = {},
 					git_placement = "after",
 					glyphs = {
