@@ -73,6 +73,7 @@ return {
 				},
 			},
 		})
+
 		require("mason").setup()
 		require("mason-lspconfig").setup({
 			automatic_enable = true,
@@ -81,6 +82,18 @@ return {
 				function(server_name) -- default handler (optional)
 					require("lspconfig")[server_name].setup({
 						capabilities = capabilities,
+					})
+				end,
+
+				lua_ls = function()
+					require("lspconfig")["lua_ls"].setup({
+						settings = {
+							Lua = {
+								diagnostics = {
+									globals = { "vim" },
+								},
+							},
+						},
 					})
 				end,
 

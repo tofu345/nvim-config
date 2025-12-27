@@ -14,6 +14,7 @@ return {
 			"heex",
 			"javascript",
 			"html",
+			"markdown",
 		})
 		vim.cmd(":silent TSUpdate")
 	end,

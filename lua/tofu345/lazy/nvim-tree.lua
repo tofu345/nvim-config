@@ -116,6 +116,6 @@ return {
 			},
 		})
 
-		vim.keymap.set("n", "-", "<cmd>NvimTreeToggle<cr>")
+		vim.keymap.set("n", "-", [[<cmd>NvimTreeToggle<cr>]])
 	end,
 }
