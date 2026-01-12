@@ -35,6 +35,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 -- yoinked from the primeagens init.lua https://github.com/ThePrimeagen/init.lua
 return {
 	"neovim/nvim-lspconfig",
+	name = "lsp",
 	lazy = false,
 	dependencies = {
 		"williamboman/mason.nvim",
@@ -121,8 +122,8 @@ return {
 				end,
 			},
 			window = {
-				completion = cmp.config.window.bordered(),
-				documentation = cmp.config.window.bordered(),
+				completion = cmp.config.window.bordered({ border = "rounded" }),
+				documentation = cmp.config.window.bordered({ border = "rounded" }),
 			},
 			-- https://github.com/hrsh7th/nvim-cmp/wiki/Example-mappings#luasnip
 			mapping = cmp.mapping.preset.insert({
