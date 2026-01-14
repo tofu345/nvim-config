@@ -75,19 +75,20 @@ return {
 			},
 		})
 
+		local lspconfig = require("lspconfig")
 		require("mason").setup()
 		require("mason-lspconfig").setup({
 			automatic_enable = true,
 			ensure_installed = {},
 			handlers = {
 				function(server_name) -- default handler (optional)
-					require("lspconfig")[server_name].setup({
+					lspconfig[server_name].setup({
 						capabilities = capabilities,
 					})
 				end,
 
 				lua_ls = function()
-					require("lspconfig")["lua_ls"].setup({
+					lspconfig["lua_ls"].setup({
 						settings = {
 							Lua = {
 								diagnostics = {
@@ -99,7 +100,7 @@ return {
 				end,
 
 				hls = function()
-					require("lspconfig")["hls"].setup({
+					lspconfig["hls"].setup({
 						filetypes = { "haskell", "lhaskell", "cabal" },
 					})
 				end,

@@ -5,6 +5,7 @@ set.shada = "!,'1000,<50,s10,h"
 
 set.shortmess:append("S") -- show 'search hit BOTTOM, continuing at TOP'
 
+set.spell = false
 set.foldmethod = "manual"
 set.showmode = true
 set.signcolumn = "yes"
@@ -26,7 +27,6 @@ set.softtabstop = 4
 set.shiftwidth = 4
 set.expandtab = false
 
-set.spell = false
 set.swapfile = false
 set.backup = false
 set.undodir = os.getenv("HOME") .. "/.vim/undodir"

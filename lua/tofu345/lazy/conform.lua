@@ -13,8 +13,10 @@ return {
 				go = { "gofmt" },
 				typescript = { "prettier" },
 				-- javascript = { "prettier" },
-				markdown = { "prettier" },
 				ocaml = { "ocamlformat" },
+				python = { "black" },
+
+				markdown = { "prettier" },
 				["*"] = { "trim_whitespace" },
 			},
 		})
