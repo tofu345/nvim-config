@@ -2,16 +2,14 @@ vim.api.nvim_create_autocmd("LspAttach", {
 	callback = function()
 		local set = vim.keymap.set
 		local builtin = require("telescope.builtin")
-		local themes = require("telescope.themes")
-
-		-- see :help lsp-defaults
+		-- local themes = require("telescope.themes")
 
 		vim.keymap.set({ "i" }, "<C-K>", function()
-			require("luasnip").expand({})
-		end, { silent = true, desc = "LuaSnap Expand" })
+			require("luasnip").expand()
+		end, { buffer = true, desc = "LuaSnap Expand" })
 
 		set("n", "grr", function()
-			builtin.lsp_references(themes.get_ivy({ height = 0.5 }))
+			builtin.lsp_references({ layout_strategy = "flex" })
 		end, { buffer = true, desc = "Lsp References" })
 
 		set("n", "<leader>ca", vim.lsp.buf.code_action, { buffer = true, desc = "Lsp Code Action" })
@@ -22,7 +20,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		set("n", "gli", "<CMD>LspInfo<CR>", { buffer = true })
 		set("n", "gls", ":LspStop", { buffer = true })
 
-		-- I like my rounded borders
+		-- I like rounded borders
 		set("n", "K", function()
 			vim.lsp.buf.hover({ border = "rounded" })
 		end, { buffer = true, desc = "Lsp Hover" })
@@ -32,40 +30,40 @@ vim.api.nvim_create_autocmd("LspAttach", {
 	end,
 })
 
--- yoinked from the primeagens init.lua https://github.com/ThePrimeagen/init.lua
+-- began with https://github.com/ThePrimeagen/init.lua
 return {
 	"neovim/nvim-lspconfig",
-	name = "lsp",
 	lazy = false,
 	priority = 900,
 	dependencies = {
-		"williamboman/mason.nvim",
-		"williamboman/mason-lspconfig.nvim",
+		{ "mason-org/mason.nvim", opts = {} },
+		"mason-org/mason-lspconfig.nvim",
 		"hrsh7th/cmp-nvim-lsp",
 		"hrsh7th/cmp-buffer",
 		"hrsh7th/cmp-path",
 		"hrsh7th/cmp-cmdline",
 		"hrsh7th/nvim-cmp",
+		{
+			"folke/lazydev.nvim",
+			ft = "lua", -- only load on lua files
+			opts = {
+				library = {
+					-- See the configuration section for more details
+					-- Load luvit types when the `vim.uv` word is found
+					{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
+				},
+			},
+		},
 		"j-hui/fidget.nvim",
 		{
 			"L3MON4D3/LuaSnip",
-			-- follow latest release.
-			version = "v2.*",
+			version = "v2.*", -- follow latest release.
 			build = "make install_jsregexp",
 		},
 		"saadparwaiz1/cmp_luasnip",
 	},
 	config = function()
-		vim.lsp.set_log_level("OFF")
-
-		local cmp = require("cmp")
-		local cmp_lsp = require("cmp_nvim_lsp")
-		local capabilities = vim.tbl_deep_extend(
-			"force",
-			{},
-			vim.lsp.protocol.make_client_capabilities(),
-			cmp_lsp.default_capabilities()
-		)
+		vim.lsp.set_log_level("DEBUG")
 
 		require("fidget").setup({
 			notification = {
@@ -76,32 +74,17 @@ return {
 			},
 		})
 
-		require("mason").setup()
 		require("mason-lspconfig").setup({
 			ensure_installed = {
 				"clangd",
-				"emmylua_ls",
+				"lua_ls",
 				"gopls",
 				"pyright",
 				"ts_ls",
 			},
-			handlers = {
-				function(server_name) -- default handler (optional)
-					require("lspconfig")[server_name].setup({
-						capabilities = capabilities,
-					})
-				end,
-
-				hls = function()
-					require("lspconfig").hls.setup({
-						filetypes = { "haskell", "lhaskell", "cabal" },
-					})
-				end,
-			},
 		})
 
 		require("luasnip.loaders.from_snipmate").lazy_load({ paths = { "~/.config/nvim/snippets" } })
-
 		local luasnip = require("luasnip")
 		luasnip.config.set_config({
 			history = true,
@@ -109,6 +92,7 @@ return {
 			enable_autosnippets = true,
 		})
 
+		local cmp = require("cmp")
 		cmp.setup({
 			completion = { autocomplete = false },
 			snippet = {
@@ -120,34 +104,10 @@ return {
 				completion = cmp.config.window.bordered({ border = "rounded" }),
 				documentation = cmp.config.window.bordered({ border = "rounded" }),
 			},
-			-- https://github.com/hrsh7th/nvim-cmp/wiki/Example-mappings#luasnip
 			mapping = cmp.mapping.preset.insert({
-				["<C-p>"] = cmp.mapping(function()
-					if cmp.visible() then
-						cmp.select_prev_item()
-					elseif luasnip.locally_jumpable(-1) then
-						luasnip.jump(-1)
-					end
-				end, { "i", "s" }),
-
-				["<C-n>"] = cmp.mapping(function()
-					if cmp.visible() then
-						cmp.select_next_item()
-					elseif luasnip.locally_jumpable(1) then
-						luasnip.jump(1)
-					end
-				end, { "i", "s" }),
-
-				["<C-y>"] = cmp.mapping(function()
-					if cmp.visible() then
-						if luasnip.expandable() then
-							luasnip.expand()
-						else
-							cmp.confirm({ select = true })
-						end
-					end
-				end),
-
+				["<C-p>"] = cmp.mapping.select_prev_item(),
+				["<C-n>"] = cmp.mapping.select_next_item(),
+				["<C-y>"] = cmp.mapping.confirm({ select = true }),
 				["<C-Space>"] = cmp.mapping.complete(),
 			}),
 			sources = cmp.config.sources({
