@@ -22,7 +22,7 @@ local function floating_config(opts)
 		height = height,
 		col = col,
 		row = row,
-		style = "minimal", -- No borders or extra UI elements
+		style = "minimal", -- No extra UI elements
 		border = "rounded",
 	}
 end
@@ -41,31 +41,31 @@ local function create_floating_window(opts)
 	-- Create the floating window
 	local win = vim.api.nvim_open_win(buf, true, floating_config())
 
-	-- Enter insert mode
-	-- vim.cmd("startinsert")
-
 	return { buf = buf, win = win }
 end
 
+local group = vim.api.nvim_create_augroup("float-terminal-resized", {})
 vim.api.nvim_create_autocmd("VimResized", {
-	group = vim.api.nvim_create_augroup("custom-terminal-resized", {}),
+	group = group,
 	callback = function()
 		if not vim.api.nvim_win_is_valid(state.win) or state.win == nil then
 			return
 		end
-
-		vim.api.nvim_win_set_config(state.win, floating_config())
+		-- resize if the terminal is in the floating window - https://github.com/neovim/neovim/issues/12389
+		if vim.api.nvim_win_get_config(state.win).relative ~= "" then
+			vim.api.nvim_win_set_config(state.win, floating_config())
+		end
 	end,
 })
 
 local toggle_floating_terminal = function()
-	if not vim.api.nvim_win_is_valid(state.win) then
+	if vim.api.nvim_win_is_valid(state.win) then
+		vim.api.nvim_win_hide(state.win)
+	else
 		state = create_floating_window({ buf = state.buf })
 		if vim.bo[state.buf].buftype ~= "terminal" then
 			vim.cmd.terminal()
 		end
-	else
-		vim.api.nvim_win_hide(state.win)
 	end
 end
 

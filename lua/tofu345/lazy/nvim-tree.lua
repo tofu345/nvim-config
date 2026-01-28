@@ -40,10 +40,10 @@ local function my_on_attach(bufnr)
 	end, opts("Run Shell Command"))
 
 	vim.keymap.set("n", "_", change_root_to_global_cwd, opts("Change Root To Global CWD"))
-	vim.keymap.set("n", "h", api.tree.close, opts("Close"))
+	vim.keymap.set("n", "h", api.node.navigate.parent, opts("Parent Directory"))
 	vim.keymap.set("n", "l", edit_or_open, opts("Edit Or Open"))
 
-	vim.keymap.set("n", "H", api.tree.collapse_all, opts("Collapse All"))
+	vim.keymap.set("n", "H", api.tree.close, opts("Close"))
 	vim.keymap.set("n", "L", "<cmd>wincmd o<cr>", opts("Close other windows"))
 	vim.keymap.set("n", "<C-V>", vsplit_preview, opts("Open: Vertical Split"))
 

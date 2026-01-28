@@ -7,15 +7,20 @@ return {
 				prettier = {
 					append_args = { "--tab-width", "4" },
 				},
+				["clang-format"] = {
+					append_args = { "--style=file:/home/tofs/.clang-format" },
+				},
 			},
 			formatters_by_ft = {
 				lua = { "stylua" },
 				go = { "gofmt" },
+				javascript = { "prettier" },
 				typescript = { "prettier" },
-				-- javascript = { "prettier" },
+				css = { "prettier" },
+				html = { "prettier" },
 				ocaml = { "ocamlformat" },
 				python = { "black" },
-
+				java = { "clang-format" },
 				markdown = { "prettier" },
 				["*"] = { "trim_whitespace" },
 			},

@@ -37,6 +37,7 @@ return {
 	"neovim/nvim-lspconfig",
 	name = "lsp",
 	lazy = false,
+	priority = 900,
 	dependencies = {
 		"williamboman/mason.nvim",
 		"williamboman/mason-lspconfig.nvim",
@@ -55,7 +56,7 @@ return {
 		"saadparwaiz1/cmp_luasnip",
 	},
 	config = function()
-		vim.lsp.set_log_level("off")
+		vim.lsp.set_log_level("OFF")
 
 		local cmp = require("cmp")
 		local cmp_lsp = require("cmp_nvim_lsp")
@@ -75,32 +76,24 @@ return {
 			},
 		})
 
-		local lspconfig = require("lspconfig")
 		require("mason").setup()
 		require("mason-lspconfig").setup({
-			automatic_enable = true,
-			ensure_installed = {},
+			ensure_installed = {
+				"clangd",
+				"emmylua_ls",
+				"gopls",
+				"pyright",
+				"ts_ls",
+			},
 			handlers = {
 				function(server_name) -- default handler (optional)
-					lspconfig[server_name].setup({
+					require("lspconfig")[server_name].setup({
 						capabilities = capabilities,
 					})
 				end,
 
-				lua_ls = function()
-					lspconfig["lua_ls"].setup({
-						settings = {
-							Lua = {
-								diagnostics = {
-									globals = { "vim" },
-								},
-							},
-						},
-					})
-				end,
-
 				hls = function()
-					lspconfig["hls"].setup({
+					require("lspconfig").hls.setup({
 						filetypes = { "haskell", "lhaskell", "cabal" },
 					})
 				end,
@@ -117,6 +110,7 @@ return {
 		})
 
 		cmp.setup({
+			completion = { autocomplete = false },
 			snippet = {
 				expand = function(args)
 					luasnip.lsp_expand(args.body) -- For `luasnip` users.

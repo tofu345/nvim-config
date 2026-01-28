@@ -33,3 +33,6 @@ set.undodir = os.getenv("HOME") .. "/.vim/undodir"
 set.undofile = true
 set.isfname:append("@-@")
 set.updatetime = 50
+
+-- ocamlformat additional configuration
+vim.cmd([[set rtp^="/home/tofs/.opam/default/share/ocp-indent/vim"]])
