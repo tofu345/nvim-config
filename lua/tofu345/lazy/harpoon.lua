@@ -1,15 +1,18 @@
 return {
-	"theprimeagen/harpoon",
-	branch = "harpoon2",
+	dir = "~/builds/harpoon",
 	dependencies = { "nvim-lua/plenary.nvim" },
 	config = function()
 		local harpoon = require("harpoon")
-		local extensions = require("harpoon.extensions")
 
 		-- REQUIRED
-		harpoon:setup({})
-
-		-- harpoon:extend(extensions.builtins.highlight_current_file())
+		harpoon:setup({
+			settings = {
+				sync_on_ui_close = true,
+				key = function()
+					return vim.fn.getcwd(-1, 0)
+				end,
+			},
+		})
 
 		vim.keymap.set("n", "<leader>a", function()
 			harpoon:list():add()
