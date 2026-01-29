@@ -1,5 +1,6 @@
 local function my_on_attach(bufnr)
 	local api = require("nvim-tree.api")
+	api.config.mappings.default_on_attach(bufnr)
 
 	local function opts(desc)
 		return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
@@ -7,7 +8,7 @@ local function my_on_attach(bufnr)
 
 	-- @alex-courtis https://github.com/nvim-tree/nvim-tree.lua/wiki/Recipes#change-root-to-global-current-working-directory
 	local function change_root_to_global_cwd()
-		local global_cwd = vim.fn.getcwd(-1, -1)
+		local global_cwd = vim.fn.getcwd(-1, 0)
 		api.tree.change_root(global_cwd)
 	end
 
@@ -32,14 +33,25 @@ local function my_on_attach(bufnr)
 		api.tree.focus() -- Finally refocus on tree if it was lost
 	end
 
-	api.config.mappings.default_on_attach(bufnr)
+	local function tcd()
+		local node = api.tree.get_node_under_cursor()
+		local path
+		if node.type == "directory" then
+			path = node.absolute_path
+		else
+			path = node.parent.absolute_path
+		end
+		vim.api.nvim_input(":tcd " .. path .. "<CR>")
+		api.tree.change_root(path)
+	end
 
 	vim.keymap.set("n", "!", function()
 		local node = api.tree.get_node_under_cursor()
 		vim.api.nvim_input(":! '" .. node.absolute_path .. "'<Home><Right>") -- surround with quotes
 	end, opts("Run Shell Command"))
 
-	vim.keymap.set("n", "_", change_root_to_global_cwd, opts("Change Root To Global CWD"))
+	vim.keymap.set("n", "_", change_root_to_global_cwd, opts("Change Root To Tab Directory"))
+	vim.keymap.set("n", "cd", tcd, opts("Change Tab Directory"))
 	vim.keymap.set("n", "h", api.node.navigate.parent, opts("Parent Directory"))
 	vim.keymap.set("n", "l", edit_or_open, opts("Edit Or Open"))
 
@@ -47,7 +59,6 @@ local function my_on_attach(bufnr)
 	vim.keymap.set("n", "L", "<cmd>wincmd o<cr>", opts("Close other windows"))
 	vim.keymap.set("n", "<C-V>", vsplit_preview, opts("Open: Vertical Split"))
 
-	-- remove: copy, cut, delete, some rename variants
 	vim.keymap.del("n", "c", { buffer = bufnr })
 	vim.keymap.del("n", "p", { buffer = bufnr })
 	vim.keymap.del("n", "x", { buffer = bufnr })
@@ -55,6 +66,8 @@ local function my_on_attach(bufnr)
 	vim.keymap.del("n", "bd", { buffer = bufnr })
 	vim.keymap.del("n", "e", { buffer = bufnr })
 	vim.keymap.del("n", "<C-R>", { buffer = bufnr })
+	vim.keymap.del("n", "<C-E>", { buffer = bufnr })
+	vim.keymap.del("n", "S", { buffer = bufnr }) -- slow and uncancellable :|
 end
 
 return {
@@ -72,7 +85,7 @@ return {
 
 		require("nvim-tree").setup({
 			on_attach = my_on_attach,
-			disable_netrw = false,
+			disable_netrw = true,
 			hijack_netrw = true,
 			view = {
 				width = 40,
@@ -116,6 +129,7 @@ return {
 			},
 		})
 
-		vim.keymap.set("n", "-", [[<cmd>NvimTreeToggle<cr>]])
+		vim.keymap.set("n", "-", [[<CMD>NvimTreeToggle<CR>]])
+		vim.keymap.set("n", "<leader>pv", [[<CMD>NvimTreeFindFile!<CR>]])
 	end,
 }

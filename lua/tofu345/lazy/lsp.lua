@@ -77,12 +77,19 @@ return {
 		require("mason-lspconfig").setup({
 			ensure_installed = {
 				"clangd",
-				"lua_ls",
 				"gopls",
 				"pyright",
 				"ts_ls",
 			},
 		})
+
+		-- https://github.com/folke/lazydev.nvim/issues/136#issuecomment-3796597122
+		vim.lsp.config("lua_ls", {
+			cmd = { "lua-language-server" },
+			filetypes = { "lua" },
+			root_markers = { ".luarc.json", ".git" },
+		})
+		vim.lsp.enable("lua_ls")
 
 		require("luasnip.loaders.from_snipmate").lazy_load({ paths = { "~/.config/nvim/snippets" } })
 		local luasnip = require("luasnip")
