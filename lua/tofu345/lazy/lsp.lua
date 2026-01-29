@@ -111,10 +111,33 @@ return {
 				completion = cmp.config.window.bordered({ border = "rounded" }),
 				documentation = cmp.config.window.bordered({ border = "rounded" }),
 			},
+			-- https://github.com/hrsh7th/nvim-cmp/wiki/Example-mappings#luasnip
 			mapping = cmp.mapping.preset.insert({
-				["<C-p>"] = cmp.mapping.select_prev_item(),
-				["<C-n>"] = cmp.mapping.select_next_item(),
-				["<C-y>"] = cmp.mapping.confirm({ select = true }),
+				["<C-p>"] = cmp.mapping(function()
+					if cmp.visible() then
+						cmp.select_prev_item()
+					elseif luasnip.locally_jumpable(-1) then
+						luasnip.jump(-1)
+					end
+				end, { "i", "s" }),
+
+				["<C-n>"] = cmp.mapping(function()
+					if cmp.visible() then
+						cmp.select_next_item()
+					elseif luasnip.locally_jumpable(1) then
+						luasnip.jump(1)
+					end
+				end, { "i", "s" }),
+
+				["<C-y>"] = cmp.mapping(function()
+					if cmp.visible() then
+						if luasnip.expandable() then
+							luasnip.expand()
+						else
+							cmp.confirm({ select = true })
+						end
+					end
+				end),
 				["<C-Space>"] = cmp.mapping.complete(),
 			}),
 			sources = cmp.config.sources({
