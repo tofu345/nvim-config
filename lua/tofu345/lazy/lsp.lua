@@ -78,18 +78,26 @@ return {
 			ensure_installed = {
 				"clangd",
 				"gopls",
+				"lua_ls",
 				"pyright",
 				"ts_ls",
 			},
 		})
 
-		-- https://github.com/folke/lazydev.nvim/issues/136#issuecomment-3796597122
+		-- https://github.com/folke/lazydev.nvim/issues/136#issuecomment-3855867406
 		vim.lsp.config("lua_ls", {
-			cmd = { "lua-language-server" },
-			filetypes = { "lua" },
-			root_markers = { ".luarc.json", ".git" },
+			settings = {
+				Lua = {
+					workspace = {
+						checkThirdParty = false,
+						library = {
+							vim.env.VIMRUNTIME,
+							{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
+						},
+					},
+				},
+			},
 		})
-		vim.lsp.enable("lua_ls")
 
 		require("luasnip.loaders.from_snipmate").lazy_load({ paths = { "~/.config/nvim/snippets" } })
 		local luasnip = require("luasnip")

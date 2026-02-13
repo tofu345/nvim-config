@@ -25,11 +25,6 @@ return {
 				hl.TreesitterContext.bg = colors.bg
 				hl.TreesitterContextLineNumber.bg = colors.bg
 
-				local black = "#000000"
-				hl.TabLineSel = { fg = colors.fg, bg = black }
-				hl.TabLine = { fg = colors.comment, bg = black }
-				hl.TabLineFill.bg = black
-
 				vim.fn.sign_define("DapStopped", { text = "→", texthl = "", linehl = "", numhl = "" })
 			end,
 		})

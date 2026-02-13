@@ -8,9 +8,6 @@ return {
 		harpoon:setup({
 			settings = {
 				sync_on_ui_close = true,
-				key = function()
-					return vim.fn.getcwd(-1, 0)
-				end,
 			},
 		})
 

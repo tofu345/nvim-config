@@ -85,8 +85,8 @@ return {
 
 		require("nvim-tree").setup({
 			on_attach = my_on_attach,
-			disable_netrw = true,
-			hijack_netrw = true,
+			disable_netrw = false,
+			hijack_netrw = false,
 			view = {
 				width = 40,
 			},
@@ -130,6 +130,5 @@ return {
 		})
 
 		vim.keymap.set("n", "-", [[<CMD>NvimTreeToggle<CR>]])
-		vim.keymap.set("n", "<leader>pv", [[<CMD>NvimTreeFindFile!<CR>]])
 	end,
 }
