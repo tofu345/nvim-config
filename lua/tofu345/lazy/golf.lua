@@ -1,1 +1,4 @@
-return { "vuciv/golf" }
+return {
+	"vuciv/golf",
+	enabled = false,
+}

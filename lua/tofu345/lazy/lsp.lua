@@ -1,34 +1,34 @@
-vim.api.nvim_create_autocmd("LspAttach", {
-	callback = function()
-		local set = vim.keymap.set
-		local builtin = require("telescope.builtin")
-		-- local themes = require("telescope.themes")
+function LspBindings()
+	local set = vim.keymap.set
+	local builtin = require("telescope.builtin")
+	-- local themes = require("telescope.themes")
 
-		vim.keymap.set({ "i" }, "<C-K>", function()
-			require("luasnip").expand()
-		end, { buffer = true, desc = "LuaSnap Expand" })
+	vim.keymap.set({ "i" }, "<C-K>", function()
+		require("luasnip").expand()
+	end, { buffer = true, desc = "LuaSnap Expand" })
 
-		set("n", "grr", function()
-			builtin.lsp_references({ layout_strategy = "flex" })
-		end, { buffer = true, desc = "Lsp References" })
+	set("n", "grr", function()
+		builtin.lsp_references({ layout_strategy = "flex" })
+	end, { buffer = true, desc = "Lsp References" })
 
-		set("n", "<leader>ca", vim.lsp.buf.code_action, { buffer = true, desc = "Lsp Code Action" })
-		set("n", "<leader>vd", vim.diagnostic.open_float, { buffer = true, desc = "Lsp View Diagnostic Float" })
-		set("n", "<leader>r", vim.lsp.buf.rename, { buffer = true, desc = "Lsp Rename" })
-		set("n", "gd", vim.lsp.buf.definition, { buffer = true, desc = "Go to Definition" })
+	set("n", "<leader>ca", vim.lsp.buf.code_action, { buffer = true, desc = "Lsp Code Action" })
+	set("n", "<leader>vd", vim.diagnostic.open_float, { buffer = true, desc = "Lsp View Diagnostic Float" })
+	set("n", "<leader>r", vim.lsp.buf.rename, { buffer = true, desc = "Lsp Rename" })
+	set("n", "gd", vim.lsp.buf.definition, { buffer = true, desc = "Go to Definition" })
 
-		set("n", "gli", "<CMD>LspInfo<CR>", { buffer = true })
-		set("n", "gls", ":LspStop", { buffer = true })
+	set("n", "gli", "<CMD>LspInfo<CR>", { buffer = true })
+	set("n", "gls", ":LspStop", { buffer = true })
 
-		-- I like rounded borders
-		set("n", "K", function()
-			vim.lsp.buf.hover({ border = "rounded" })
-		end, { buffer = true, desc = "Lsp Hover" })
-		set("i", "<C-s>", function()
-			vim.lsp.buf.signature_help({ border = "rounded" })
-		end, { buffer = true, desc = "Lsp Signature Help" })
-	end,
-})
+	-- I like rounded borders
+	set("n", "K", function()
+		vim.lsp.buf.hover({ border = "rounded" })
+	end, { buffer = true, desc = "Lsp Hover" })
+	set("i", "<C-s>", function()
+		vim.lsp.buf.signature_help({ border = "rounded" })
+	end, { buffer = true, desc = "Lsp Signature Help" })
+end
+
+vim.api.nvim_create_autocmd("LspAttach", { callback = LspBindings })
 
 -- began with https://github.com/ThePrimeagen/init.lua
 return {
@@ -37,7 +37,7 @@ return {
 	priority = 900,
 	dependencies = {
 		{ "mason-org/mason.nvim", opts = {} },
-		"mason-org/mason-lspconfig.nvim",
+		{ "mason-org/mason-lspconfig.nvim", opts = {} },
 		"hrsh7th/cmp-nvim-lsp",
 		"hrsh7th/cmp-buffer",
 		"hrsh7th/cmp-path",
@@ -74,18 +74,10 @@ return {
 			},
 		})
 
-		require("mason-lspconfig").setup({
-			ensure_installed = {
-				"clangd",
-				"gopls",
-				"lua_ls",
-				"pyright",
-				"ts_ls",
-			},
-		})
-
-		-- https://github.com/folke/lazydev.nvim/issues/136#issuecomment-3855867406
 		vim.lsp.config("lua_ls", {
+			cmd = { "lua-language-server" },
+			filetypes = { "lua" },
+			root_markers = { ".luarc.json", ".git" },
 			settings = {
 				Lua = {
 					workspace = {
@@ -109,7 +101,7 @@ return {
 
 		local cmp = require("cmp")
 		cmp.setup({
-			completion = { autocomplete = false },
+			-- completion = { autocomplete = false },
 			snippet = {
 				expand = function(args)
 					luasnip.lsp_expand(args.body) -- For `luasnip` users.
