@@ -16,6 +16,7 @@ return {
 				go = { "gofmt" },
 				javascript = { "prettier" },
 				typescript = { "prettier" },
+				haskell = { "fourmolu" },
 				css = { "prettier" },
 				html = { "prettier" },
 				ocaml = { "ocamlformat" },

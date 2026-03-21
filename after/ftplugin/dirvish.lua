@@ -23,8 +23,8 @@ local function editCwd()
 	vim.cmd("edit " .. vim.fn.getcwd())
 end
 
+-- my nvim-tree mapping overwrites the default dirvish mapping
 vim.keymap.set("n", "-", "<plug>(dirvish_up)", { buffer = true, desc = "Parent Directory" })
-vim.keymap.set("n", "!", ".", { buffer = true, desc = [[Inserts ":! {path}" into the command-line.]] })
 
 vim.keymap.set("n", "%", newFile, { buffer = true, desc = "Create file" })
 vim.keymap.set("n", "dd", createDir, { buffer = true, desc = "Create new directory" })

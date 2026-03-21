@@ -15,7 +15,7 @@ local function my_on_attach(bufnr)
 	-- @eddiebergman https://github.com/nvim-tree/nvim-tree.lua/wiki/Recipes#h-j-k-l-style-navigation-and-editing
 	local function edit_or_open()
 		local node = api.tree.get_node_under_cursor()
-		if node.type == "directory" then
+		if node and node.nodes ~= nil then
 			api.node.open.edit() -- expand or collapse
 		else
 			api.node.open.edit() -- open file
@@ -25,7 +25,7 @@ local function my_on_attach(bufnr)
 	-- open as vsplit on current node
 	local function vsplit_preview()
 		local node = api.tree.get_node_under_cursor()
-		if node.type == "directory" then
+		if node and node.nodes ~= nil then
 			api.node.open.edit() -- expand or collapse
 		else
 			api.node.open.vertical() -- open file as vsplit
@@ -64,7 +64,7 @@ local function my_on_attach(bufnr)
 	vim.keymap.set("n", "l", edit_or_open, opts("Edit"))
 
 	vim.keymap.set("n", "H", api.tree.close, opts("Close"))
-	vim.keymap.set("n", "L", "<cmd>wincmd o<cr>", opts("Close other windows"))
+	vim.keymap.set("n", "L", [[<CMD>wincmd o<CR>]], opts("Close other windows"))
 	vim.keymap.set("n", "<C-V>", vsplit_preview, opts("Open: Vertical Split"))
 
 	vim.keymap.del("n", "c", { buffer = bufnr })
@@ -74,7 +74,6 @@ local function my_on_attach(bufnr)
 	vim.keymap.del("n", "bd", { buffer = bufnr })
 	vim.keymap.del("n", "e", { buffer = bufnr })
 	vim.keymap.del("n", "<C-R>", { buffer = bufnr })
-	-- vim.keymap.del("n", "<C-E>", { buffer = bufnr })
 	vim.keymap.del("n", "S", { buffer = bufnr }) -- slow and uncancellable :|
 end
 
@@ -82,7 +81,6 @@ return {
 	"nvim-tree/nvim-tree.lua",
 	dependencies = {
 		"justinmk/vim-dirvish",
-
 		"tpope/vim-eunuch",
 		"nvim-tree/nvim-web-devicons",
 	},
@@ -95,18 +93,12 @@ return {
 		})
 
 		require("nvim-tree").setup({
-			filesystem_watchers = {
-				ignore_dirs = { "/home/tofs/.local", "/home/tofs/.config", "/home/tofs/.undodir" },
-			},
 			on_attach = my_on_attach,
 			disable_netrw = false,
 			hijack_netrw = false,
-			view = {
-				width = 40,
-			},
-			filters = {
-				enable = false,
-			},
+			view = { width = 40 },
+			filters = { enable = false },
+			update_focused_file = { enable = true },
 			renderer = {
 				full_name = true,
 				group_empty = true,
@@ -115,7 +107,6 @@ return {
 						file = { color = true },
 						folder = { color = true },
 					},
-					show = {},
 					git_placement = "after",
 					glyphs = {
 						folder = {
@@ -126,9 +117,6 @@ return {
 						},
 					},
 				},
-			},
-			update_focused_file = {
-				enable = true,
 			},
 			actions = {
 				file_popup = {
@@ -150,6 +138,6 @@ return {
 
 		vim.keymap.set("n", "-", [[<CMD>NvimTreeToggle<CR>]])
 		vim.keymap.set("n", "<leader>ff", [[<CMD>NvimTreeFindFile!<CR>]])
-		vim.keymap.set("n", "<leader>pv", [[<CMD>Dirvish<CR>]], { desc = "File Explorer" })
+		vim.keymap.set("n", "<leader>pv", [[<CMD>Dirvish<CR>]])
 	end,
 }

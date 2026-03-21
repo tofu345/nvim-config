@@ -69,4 +69,5 @@ local toggle_floating_terminal = function()
 	end
 end
 
+vim.keymap.set("t", "<C-[>", "<C-\\><C-n>")
 vim.keymap.set("n", "<leader>tt", toggle_floating_terminal, { noremap = true, silent = true })

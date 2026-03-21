@@ -63,7 +63,7 @@ return {
 		"saadparwaiz1/cmp_luasnip",
 	},
 	config = function()
-		vim.lsp.set_log_level("DEBUG")
+		vim.lsp.set_log_level("OFF")
 
 		require("fidget").setup({
 			notification = {
