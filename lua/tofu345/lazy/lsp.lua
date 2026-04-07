@@ -1,28 +1,21 @@
 function LspBindings()
 	local set = vim.keymap.set
 	local builtin = require("telescope.builtin")
-	-- local themes = require("telescope.themes")
-
-	vim.keymap.set({ "i" }, "<C-K>", function()
-		require("luasnip").expand()
-	end, { buffer = true, desc = "LuaSnap Expand" })
-
-	set("n", "grr", function()
-		builtin.lsp_references({ layout_strategy = "flex" })
-	end, { buffer = true, desc = "Lsp References" })
+	local themes = require("telescope.themes")
 
 	set("n", "<leader>ca", vim.lsp.buf.code_action, { buffer = true, desc = "Lsp Code Action" })
 	set("n", "<leader>vd", vim.diagnostic.open_float, { buffer = true, desc = "Lsp View Diagnostic Float" })
 	set("n", "<leader>r", vim.lsp.buf.rename, { buffer = true, desc = "Lsp Rename" })
 	set("n", "gd", vim.lsp.buf.definition, { buffer = true, desc = "Go to Definition" })
-
-	set("n", "gli", "<CMD>LspInfo<CR>", { buffer = true })
-	set("n", "gls", ":LspStop", { buffer = true })
+	set("n", "grr", function()
+		builtin.lsp_references({ layout_strategy = "flex" })
+	end, { buffer = true, desc = "Lsp References" })
 
 	-- I like rounded borders
 	set("n", "K", function()
 		vim.lsp.buf.hover({ border = "rounded" })
 	end, { buffer = true, desc = "Lsp Hover" })
+
 	set("i", "<C-s>", function()
 		vim.lsp.buf.signature_help({ border = "rounded" })
 	end, { buffer = true, desc = "Lsp Signature Help" })
@@ -34,7 +27,7 @@ vim.api.nvim_create_autocmd("LspAttach", { callback = LspBindings })
 return {
 	"neovim/nvim-lspconfig",
 	lazy = false,
-	priority = 900,
+	priority = 900, -- start early?
 	dependencies = {
 		{ "mason-org/mason.nvim", opts = {} },
 		{ "mason-org/mason-lspconfig.nvim", opts = {} },
@@ -63,30 +56,13 @@ return {
 		"saadparwaiz1/cmp_luasnip",
 	},
 	config = function()
-		vim.lsp.set_log_level("OFF")
+		vim.lsp.log.set_level("OFF")
 
 		require("fidget").setup({
 			notification = {
 				window = {
 					avoid = { "NvimTree" },
 					winblend = 0,
-				},
-			},
-		})
-
-		vim.lsp.config("lua_ls", {
-			cmd = { "lua-language-server" },
-			filetypes = { "lua" },
-			root_markers = { ".luarc.json", ".git" },
-			settings = {
-				Lua = {
-					workspace = {
-						checkThirdParty = false,
-						library = {
-							vim.env.VIMRUNTIME,
-							{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
-						},
-					},
 				},
 			},
 		})
@@ -101,7 +77,6 @@ return {
 
 		local cmp = require("cmp")
 		cmp.setup({
-			-- completion = { autocomplete = false },
 			snippet = {
 				expand = function(args)
 					luasnip.lsp_expand(args.body) -- For `luasnip` users.
@@ -120,7 +95,6 @@ return {
 						luasnip.jump(-1)
 					end
 				end, { "i", "s" }),
-
 				["<C-n>"] = cmp.mapping(function()
 					if cmp.visible() then
 						cmp.select_next_item()
@@ -128,7 +102,6 @@ return {
 						luasnip.jump(1)
 					end
 				end, { "i", "s" }),
-
 				["<C-y>"] = cmp.mapping(function()
 					if cmp.visible() then
 						if luasnip.expandable() then

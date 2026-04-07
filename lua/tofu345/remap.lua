@@ -12,6 +12,10 @@ keymap.set("n", "s", [["_s]])
 keymap.set("x", "<leader>p", [["_dP]], { desc = "Paste without overwriting unnamed Register" })
 keymap.set({ "n", "v" }, "<leader>y", [["+y]], { desc = "Copy into System Clipboard" }) -- next greatest remap ever : asbjornHaland
 
+keymap.set("i", "<C-L>", function()
+	require("luasnip").expand()
+end, { desc = "LuaSnap Expand" })
+
 vim.api.nvim_create_autocmd("TextYankPost", {
 	desc = "Highlight when yanking (copying) text",
 	group = vim.api.nvim_create_augroup("highlight-yank", { clear = true }),

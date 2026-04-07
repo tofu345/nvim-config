@@ -96,6 +96,8 @@ return {
 			on_attach = my_on_attach,
 			disable_netrw = false,
 			hijack_netrw = false,
+			hijack_unnamed_buffer_when_opening = true,
+			hijack_directories = { enable = false },
 			view = { width = 40 },
 			filters = { enable = false },
 			update_focused_file = { enable = true },

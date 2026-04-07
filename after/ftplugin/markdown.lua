@@ -11,3 +11,6 @@ vim.keymap.set("n", "<A-p>", "<Cmd>PasteImg<CR>", {
 	buffer = true,
 })
 vim.keymap.set("n", "<leader>oo", [[yib:!xdg-open %:p:h/"]], { desc = "Open image under cursor", buffer = true })
+
+-- better way?
+vim.cmd([[hi @markup.quote.markdown NONE]])

@@ -44,16 +44,24 @@ local function create_floating_window(opts)
 	return { buf = buf, win = win }
 end
 
-local group = vim.api.nvim_create_augroup("float-terminal-resized", {})
 vim.api.nvim_create_autocmd("VimResized", {
-	group = group,
+	group = vim.api.nvim_create_augroup("float-terminal-resized", {}),
 	callback = function()
 		if not vim.api.nvim_win_is_valid(state.win) or state.win == nil then
 			return
 		end
-		-- resize if the terminal is in the floating window - https://github.com/neovim/neovim/issues/12389
+		-- resize only if the terminal is floating
+		-- https://github.com/neovim/neovim/issues/12389
 		if vim.api.nvim_win_get_config(state.win).relative ~= "" then
 			vim.api.nvim_win_set_config(state.win, floating_config())
+		end
+	end,
+})
+vim.api.nvim_create_autocmd("TermClose", {
+	group = vim.api.nvim_create_augroup("float-terminal-closed", {}),
+	callback = function()
+		if vim.api.nvim_win_is_valid(state.win) then
+			vim.api.nvim_win_hide(state.win)
 		end
 	end,
 })

@@ -28,7 +28,7 @@ return {
 		})
 
 		vim.keymap.set("n", "<A-f>", function()
-			require("conform").format({ bufnr = 0 })
+			require("conform").format({ async = true, bufnr = 0 })
 		end, { desc = "Conform Format" })
 	end,
 }

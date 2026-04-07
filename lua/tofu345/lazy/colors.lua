@@ -26,10 +26,6 @@ return {
 			on_highlights = function(hl, colors)
 				hl.DiffText.bg = "#594833"
 
-				-- a nicer color for TreesitterContext
-				hl.TreesitterContext.bg = colors.bg
-				hl.TreesitterContextLineNumber.bg = colors.bg
-
 				-- remove background
 				vim.fn.sign_define("DapStopped", { text = "→", texthl = "", linehl = "", numhl = "" })
 			end,
