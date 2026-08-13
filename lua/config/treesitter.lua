@@ -3,23 +3,38 @@ vim.pack.add({
     "https://github.com/nvim-treesitter/nvim-treesitter-context",
 })
 
-local filetypes = {
-    "lua",
-    "vim",
+require("nvim-treesitter").update()
+require("nvim-treesitter").install({
     "bash",
     "c",
     "cpp",
-    "svelte",
     "html",
     "javascript",
+    "lua",
+    "make",
+    "nix",
+    "svelte",
     "typescript",
-}
-
-require("nvim-treesitter").update()
-require("nvim-treesitter").install(filetypes)
+    "vim",
+    "zig",
+})
 
 vim.api.nvim_create_autocmd("FileType", {
-    pattern = filetypes,
+    pattern = {
+        "sh",
+        "bash",
+        "c",
+        "cpp",
+        "html",
+        "javascript",
+        "lua",
+        "make",
+        "nix",
+        "svelte",
+        "typescript",
+        "vim",
+        "zig",
+    },
     callback = function()
         vim.treesitter.start()
     end,

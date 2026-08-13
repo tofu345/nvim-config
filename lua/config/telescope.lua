@@ -2,7 +2,8 @@ vim.pack.add({
     { src = "https://github.com/nvim-telescope/telescope.nvim" },
     { src = "https://github.com/nvim-lua/plenary.nvim" },
     { src = "https://github.com/nvim-tree/nvim-web-devicons" },
-    { src = "https://github.com/nvim-telescope/telescope-fzf-native.nvim" },
+    { src = "https://github.com/nvim-telescope/telescope-fzy-native.nvim" },
+    { src = "https://github.com/romgrk/fzy-lua-native" },
 })
 
 require("nvim-web-devicons").setup()
@@ -15,7 +16,7 @@ vim.api.nvim_create_autocmd("PackChanged", {
     callback = function(ev)
         local name, kind = ev.data.spec.name, ev.data.kind
         -- Run build script after plugin's code has changed
-        if name == "telescope-fzf-native.nvim" and (kind == "install" or kind == "update") then
+        if name == "fzy-lua-native" and (kind == "install" or kind == "update") then
             vim.system({ "make" }, { cwd = ev.data.path }):wait()
         end
     end,
@@ -30,15 +31,13 @@ require("telescope").setup({
         },
     },
     extensions = {
-        fzf = {
-            fuzzy = true, -- false will only do exact matching
-            override_generic_sorter = true, -- override the generic sorter
-            override_file_sorter = true, -- override the file sorter
-            case_mode = "smart_case", -- or "ignore_case" or "respect_case", the default case_mode is "smart_case"
+        fzy_native = {
+            override_generic_sorter = false,
+            override_file_sorter = true,
         },
     },
 })
-require("telescope").load_extension("fzf")
+require("telescope").load_extension("fzy_native")
 
 local builtin = require("telescope.builtin")
 local themes = require("telescope.themes")

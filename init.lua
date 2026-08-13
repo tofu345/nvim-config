@@ -12,6 +12,7 @@ set.winborder = "rounded"
 
 set.shiftwidth = 4
 set.softtabstop = -1
+set.expandtab = true
 set.hlsearch = false
 set.incsearch = true
 set.ignorecase = true
@@ -25,14 +26,13 @@ keymap.set({ "n", "v", "x" }, "<leader>y", [["+y]], { desc = "Copy into System C
 keymap.set({ "n", "v", "x" }, "<leader>d", [["+d]], { desc = "Delete into System Clipboard" })
 
 keymap.set("n", "s", [["_s]])
+keymap.set("n", "<C-S-@>", "<C-^>") -- real-prog-dvorak L :|
 keymap.set("x", "<leader>p", [["_dP]], { desc = "Paste without overwriting unnamed Register" })
-
-keymap.set("t", "<C-[>", "<C-\\><C-n>")
 
 keymap.set("c", "<M-b>", "<S-Left>", { desc = "Command Mode: One Word Left" })
 keymap.set("c", "<M-e>", "<S-Right>", { desc = "Command Mode: One Word Right" })
 
-keymap.set("n", "<C-S-@>", "<C-^>") -- real-prog-dvorak L :|
+keymap.set("t", "<C-[>", "<C-\\><C-n>")
 
 vim.api.nvim_create_autocmd("TextYankPost", {
     desc = "Highlight when yanking (copying) text",
@@ -42,12 +42,12 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     end,
 })
 
-require("tofu345.undotree")
-require("tofu345.vague")
-require("tofu345.dirvish")
-require("tofu345.telescope")
-require("tofu345.harpoon")
-require("tofu345.treesitter")
-require("tofu345.lsp")
-require("tofu345.dap")
-require("tofu345.git")
+require("config.undotree")
+require("config.vague")
+require("config.dirvish")
+require("config.telescope")
+require("config.harpoon")
+require("config.treesitter")
+require("config.lsp")
+require("config.dap")
+require("config.git")
