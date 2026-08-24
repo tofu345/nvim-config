@@ -115,5 +115,6 @@ cmp.setup({
 vim.diagnostic.config({
     severity_sort = true,
     float = { source = "if_many" },
+    -- virtual_text = true,
     underline = true,
 })
