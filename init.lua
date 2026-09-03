@@ -1,5 +1,6 @@
 local set = vim.opt
-local keymap = vim.keymap
+local map = vim.keymap.set
+local autocmd = vim.api.nvim_create_autocmd
 
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
@@ -22,19 +23,23 @@ set.shortmess:append("S") -- show 'search hit BOTTOM, continuing at TOP'
 set.swapfile = false
 set.foldmethod = "manual"
 
-keymap.set({ "n", "v", "x" }, "<leader>y", [["+y]], { desc = "Copy into System Clipboard" })
-keymap.set({ "n", "v", "x" }, "<leader>d", [["+d]], { desc = "Delete into System Clipboard" })
+map({ "n", "v", "x" }, "<leader>y", [["+y]], { desc = "Copy into System Clipboard" })
+map({ "n", "v", "x" }, "<leader>d", [["+d]], { desc = "Delete into System Clipboard" })
 
-keymap.set("n", "s", [["_s]])
-keymap.set("n", "<C-S-@>", "<C-^>") -- real-prog-dvorak L :|
-keymap.set("x", "<leader>p", [["_dP]], { desc = "Paste without overwriting unnamed Register" })
+map("n", "J", "mzJ`z")
+-- map("v", "J", ":m '>+1<CR>gv=gv")
+-- map("v", "K", ":m '<-2<CR>gv=gv")
 
-keymap.set("c", "<M-b>", "<S-Left>", { desc = "Command Mode: One Word Left" })
-keymap.set("c", "<M-e>", "<S-Right>", { desc = "Command Mode: One Word Right" })
+map("n", "s", [["_s]])
+map("n", "<C-S-@>", "<C-^>") -- real-prog-dvorak L :|
+map("x", "<leader>p", [["_dP]], { desc = "Paste without overwriting unnamed Register" })
 
-keymap.set("t", "<C-[>", "<C-\\><C-n>")
+map("c", "<M-b>", "<S-Left>", { desc = "Command Mode: One Word Left" })
+map("c", "<M-e>", "<S-Right>", { desc = "Command Mode: One Word Right" })
 
-vim.api.nvim_create_autocmd("TextYankPost", {
+map("t", "<C-[>", "<C-\\><C-n>")
+
+autocmd("TextYankPost", {
     desc = "Highlight when yanking (copying) text",
     group = vim.api.nvim_create_augroup("highlight-yank", { clear = true }),
     callback = function()
@@ -42,12 +47,13 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     end,
 })
 
-require("config.undotree")
-require("config.vague")
-require("config.dirvish")
-require("config.telescope")
-require("config.harpoon")
-require("config.treesitter")
-require("config.lsp")
-require("config.dap")
-require("config.git")
+-- https://www.youtube.com/watch?v=tBxtnvatFYI
+autocmd("FileType", {
+    desc = "'q' to close help/quickfix/netrw windows",
+    pattern = "help,qf,netrw",
+    callback = function()
+        map("n", "q", "<C-w>c", { buffer = true, desc = "close help/quickfix/netrw windows" })
+    end,
+})
+
+require("config.lazy")

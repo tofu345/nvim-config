@@ -1,5 +1,4 @@
 vim.keymap.set("n", "<leader>m", ":make ")
 -- vim.keymap.set("n", "<leader>M", ":make! <Up>")
 vim.keymap.set("n", "<leader>co", "<CMD>copen 15<CR>")
-vim.keymap.set("n", "<leader>cc", "<CMD>cclose<CR>")
 vim.keymap.set("n", "<leader>ct", "<CMD>!ctags -R .<CR>")
