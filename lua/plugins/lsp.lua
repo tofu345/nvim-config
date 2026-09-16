@@ -1,5 +1,7 @@
 return {
     "neovim/nvim-lspconfig",
+    lazy = false,
+    priority = 900,
     dependencies = {
         "stevearc/conform.nvim",
         "mason-org/mason.nvim",

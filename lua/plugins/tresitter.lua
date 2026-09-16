@@ -1,10 +1,11 @@
 return {
     "nvim-treesitter/nvim-treesitter",
+    lazy = false,
+    build = ":TSUpdate",
     dependencies = {
         "nvim-treesitter/nvim-treesitter-context",
     },
     config = function()
-        require("nvim-treesitter").update()
         require("nvim-treesitter").install({
             "bash",
             "c",

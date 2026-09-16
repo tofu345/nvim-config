@@ -1,23 +1,37 @@
 return {
-    "vague-theme/vague.nvim",
+    "ts-26a/vim-darkspace",
     lazy = false,
+    priority = 1000,
     config = function()
-        require("vague").setup({
-            transparent = true,
-            colors = {
-                comment = "#737390",
-            },
-            on_highlights = function(hl, colors)
-                hl.DiffText.bg = "#463928"
-                hl.DiffChange.bg = "#2a241e"
+        vim.cmd([[
+            set background=dark termguicolors
+            let g:darkspace_italics=1
+            colorscheme darkspace
 
-                vim.api.nvim_set_hl(0, "TreesitterContext", { bg = colors.bg })
-                vim.api.nvim_set_hl(0, "TreesitterContextLineNumber", { bg = colors.bg })
+            hi StatusLine   guifg=fg guibg=bg
+            hi StatusLineNC guibg=bg
+            hi TabLineSel   guifg=fg guibg=bg
+            hi TabLine      guibg=bg
+            hi LineNr       guifg=#4e545d
+            hi link EndOfBuffer LineNr
+            hi CursorLineNr guibg=bg
+            hi SignColumn   guifg=white
+            hi TreesitterContext guibg=#0c0c0c
+            hi WarningMsg   guifg=NvimLightYellow
+            "hi clear MatchParen
 
-                -- remove background
-                vim.fn.sign_define("DapStopped", { text = "→", texthl = "", linehl = "CursorLine", numhl = "" })
-            end,
-        })
-        vim.cmd.colorscheme("vague")
-    end
+            " copied from https://github.com/vague-theme/vague.nvim
+            hi DiffAdd      guifg=fg guibg=#293125
+            hi DiffChange   guifg=fg guibg=#41362a
+            hi DiffDelete   guifg=fg guibg=#3b242a
+            hi DiffText     guifg=fg guibg=#6d583e
+            hi link DiffTextAdd DiffText
+
+            " transparent background
+            hi Normal guibg=none
+            hi NormalFloat guibg=none
+        ]])
+
+        vim.fn.sign_define("DapStopped", { text = "→", linehl = "CursorLine" })
+    end,
 }

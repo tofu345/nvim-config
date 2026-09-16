@@ -8,6 +8,7 @@ vim.g.maplocalleader = " "
 set.number = true
 set.relativenumber = true
 set.scrolloff = 4
+set.sidescrolloff = 4
 set.signcolumn = "yes"
 set.winborder = "rounded"
 
@@ -26,7 +27,7 @@ set.foldmethod = "manual"
 map({ "n", "v", "x" }, "<leader>y", [["+y]], { desc = "Copy into System Clipboard" })
 map({ "n", "v", "x" }, "<leader>d", [["+d]], { desc = "Delete into System Clipboard" })
 
-map("n", "J", "mzJ`z")
+map("n", "J", "mjJ`j")
 -- map("v", "J", ":m '>+1<CR>gv=gv")
 -- map("v", "K", ":m '<-2<CR>gv=gv")
 
@@ -55,5 +56,7 @@ autocmd("FileType", {
         map("n", "q", "<C-w>c", { buffer = true, desc = "close help/quickfix/netrw windows" })
     end,
 })
+
+vim.cmd([[ let loaded_matchparen = 1 ]])
 
 require("config.lazy")
