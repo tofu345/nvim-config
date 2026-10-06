@@ -99,6 +99,13 @@ return {
                         luasnip.jump(1)
                     end
                 end, { "i", "s" }),
+                ["<C-l>"] = cmp.mapping(function()
+                    if luasnip.expandable() then
+                        luasnip.expand()
+                    elseif luasnip.locally_jumpable(1) then
+                        luasnip.jump(1)
+                    end
+                end, { "i", "s" }),
                 ["<C-y>"] = cmp.mapping(function()
                     if cmp.visible() then
                         if luasnip.expandable() then
@@ -109,10 +116,6 @@ return {
                     end
                 end, { "i", "s" }),
                 ["<C-Space>"] = cmp.mapping.complete(),
-                ["<C-[>"] = cmp.mapping(function()
-                    cmp.mapping.close()
-                    vim.cmd.stopinsert()
-                end, { "i", "s" }),
             }),
             sources = cmp.config.sources({
                 { name = "nvim_lsp" },

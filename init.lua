@@ -57,6 +57,4 @@ autocmd("FileType", {
     end,
 })
 
-vim.cmd([[ let loaded_matchparen = 1 ]])
-
 require("config.lazy")
